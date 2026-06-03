@@ -7,6 +7,7 @@ Landing page estatica para DOGUI, enfocada en servicios de ciberseguridad, autom
 - Hero comercial con imagen de operaciones de ciberseguridad.
 - Secciones de servicios: SOC/MDR, pentesting, Blue Team, respuesta a incidentes, GRC y capacitacion.
 - Productos/plataformas: CTI, EDR, SIEM, dark web, GRC y SOAR.
+- Apartado SGSI con CID-SI, software de desarrollo propio para gestion de seguridad de la informacion.
 - Seccion especializada para consultoria SPEI/SPID.
 - Paquetes comerciales y formulario de contacto con `mailto:`.
 
@@ -38,6 +39,12 @@ GitHub puede tardar de 1 a 5 minutos en publicar el primer deploy.
 - `script.js`
 - `assets/dogui-hero.png`
 - `assets/favicon.svg`
+
+## SGSI / CID-SI
+
+CID-SI se presenta como software de desarrollo propio de DOGUI para apoyar la operacion de un Sistema de Gestion
+de Seguridad de la Informacion. Integra gestion de marco normativo, controles, evidencias, auditorias, incidentes,
+identidades, vulnerabilidades, datos personales, fraude, indicadores KPI/KRI/KCI, usuarios y datos maestros.
 
 ## Pendientes de branding
 
