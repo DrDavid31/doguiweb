@@ -11,6 +11,8 @@ Landing page estatica para DOGUI, enfocada en servicios de ciberseguridad, autom
 - Apartado PyME con productos empaquetados: WhatsApp Security Assistant, Link & File Checker, Phishing Simulator,
   Credential Exposure Monitor, Exposure Scan, Brand Protection, Email Security Check, Ransomware Readiness,
   Compliance Lite, Vendor Risk Lite, Executive Cyber Report y AI Fraud Defense.
+- Apartado DOGUI Awareness con paquetes Starter, Plus y Pro, integracion con WhatsApp, catalogo de cursos,
+  simulaciones de phishing, evaluaciones, constancias, reportes y dashboard.
 - Seccion especializada para consultoria SPEI/SPID.
 - Paquetes comerciales y formulario de contacto con `mailto:`.
 
@@ -55,6 +57,12 @@ El apartado PyME agrupa productos ligeros y comercialmente empaquetables para pe
 un producto estrella basado en WhatsApp, analisis de links y archivos, simulaciones de phishing, monitoreo de
 credenciales expuestas, revision de superficie expuesta, proteccion de marca, seguridad de correo, preparacion ante
 ransomware, cumplimiento basico, riesgo de proveedores, reporte ejecutivo y defensa contra fraude con IA.
+
+## DOGUI Awareness
+
+Programa de concientizacion en ciberseguridad para empresas. Incluye cursos, microcapacitaciones, evaluaciones,
+constancias, simulaciones de phishing, campanas por correo y WhatsApp, reportes ejecutivos, recomendaciones por area,
+seguimiento de avance y metricas de riesgo. Se presenta en tres paquetes: Starter, Plus y Pro.
 
 ## Pendientes de branding
 

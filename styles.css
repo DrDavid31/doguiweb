@@ -999,6 +999,221 @@ h3 {
   color: rgba(255, 255, 255, 0.76);
 }
 
+.awareness-section {
+  padding: clamp(72px, 10vw, 126px) clamp(18px, 5vw, 72px);
+  color: var(--white);
+  background:
+    linear-gradient(135deg, rgba(37, 196, 219, 0.18), transparent 30%),
+    linear-gradient(180deg, #0b1420, #102932 55%, #0c1119);
+}
+
+.awareness-heading h2,
+.awareness-heading p,
+.awareness-section h3,
+.awareness-section h4 {
+  color: var(--white);
+}
+
+.awareness-heading p:not(.eyebrow) {
+  width: min(900px, 100%);
+  margin: 0 0 12px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(1rem, 1.35vw, 1.16rem);
+}
+
+.awareness-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.awareness-summary article,
+.awareness-plans article,
+.course-grid article {
+  border-radius: 8px;
+}
+
+.awareness-summary article {
+  min-height: 292px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.awareness-summary ul,
+.awareness-plans ul {
+  display: grid;
+  gap: 9px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.awareness-summary li,
+.awareness-plans li {
+  position: relative;
+  padding-left: 18px;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.awareness-summary li::before,
+.awareness-plans li::before {
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  content: "";
+  background: var(--green);
+  border-radius: 50%;
+}
+
+.awareness-plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.awareness-plans article {
+  min-height: 430px;
+  padding: 26px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.awareness-plans span {
+  display: inline-flex;
+  margin-bottom: 22px;
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.awareness-plans p,
+.awareness-whatsapp p,
+.course-grid p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.awareness-plan-highlight {
+  background:
+    linear-gradient(135deg, rgba(84, 209, 140, 0.2), rgba(37, 196, 219, 0.09)),
+    rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(84, 209, 140, 0.38) !important;
+  box-shadow: var(--shadow);
+}
+
+.awareness-whatsapp {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(360px, 1.15fr);
+  gap: clamp(24px, 5vw, 72px);
+  align-items: center;
+  margin-top: 24px;
+  padding: clamp(24px, 4vw, 38px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+}
+
+.whatsapp-bubbles {
+  display: grid;
+  gap: 10px;
+}
+
+.whatsapp-bubbles span {
+  width: fit-content;
+  max-width: 100%;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 14px;
+  color: #07131a;
+  background: #dff7ef;
+  border: 1px solid #b8e8d5;
+  border-radius: 8px;
+  font-weight: 850;
+}
+
+.whatsapp-bubbles span:nth-child(even) {
+  justify-self: end;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.course-catalog {
+  margin-top: 24px;
+}
+
+.course-catalog .section-heading {
+  margin-bottom: 22px;
+}
+
+.course-catalog h3 {
+  margin-bottom: 0;
+  font-size: clamp(1.45rem, 2.7vw, 2.4rem);
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.course-grid article {
+  min-height: 174px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.course-grid span {
+  display: inline-flex;
+  margin-bottom: 20px;
+  color: var(--amber);
+  font-size: 0.74rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.course-grid h4 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+.awareness-map {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.awareness-map div {
+  min-height: 86px;
+  display: grid;
+  align-content: center;
+  gap: 6px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 3px solid var(--green);
+  border-radius: 8px;
+}
+
+.awareness-map strong {
+  color: var(--white);
+}
+
+.awareness-map span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.9rem;
+}
+
 .finance-band {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
@@ -1406,11 +1621,15 @@ h3 {
   .package-grid,
   .impact-grid,
   .pyme-product-grid,
-  .pyme-package-grid {
+  .pyme-package-grid,
+  .course-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .method-list {
+  .method-list,
+  .awareness-summary,
+  .awareness-plans,
+  .awareness-map {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1427,6 +1646,7 @@ h3 {
   .sgsi-section,
   .pyme-hero-card,
   .pyme-focus,
+  .awareness-whatsapp,
   .finance-band,
   .split,
   .contact-section {
@@ -1549,6 +1769,7 @@ h3 {
   .section,
   .sgsi-section,
   .pyme-section,
+  .awareness-section,
   .finance-band,
   .contact-section {
     padding-inline: 18px;
@@ -1559,6 +1780,10 @@ h3 {
   .impact-grid,
   .pyme-product-grid,
   .pyme-package-grid,
+  .awareness-summary,
+  .awareness-plans,
+  .course-grid,
+  .awareness-map,
   .sgsi-capabilities,
   .method-list,
   .package-grid,
