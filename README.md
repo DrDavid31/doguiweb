@@ -8,6 +8,9 @@ Landing page estatica para DOGUI, enfocada en servicios de ciberseguridad, autom
 - Secciones de servicios: SOC/MDR, pentesting, Blue Team, respuesta a incidentes, GRC y capacitacion.
 - Productos/plataformas: CTI, EDR, SIEM, dark web, GRC y SOAR.
 - Apartado SGSI con CID-SI, software de desarrollo propio para gestion de seguridad de la informacion.
+- Apartado PyME con productos empaquetados: WhatsApp Security Assistant, Link & File Checker, Phishing Simulator,
+  Credential Exposure Monitor, Exposure Scan, Brand Protection, Email Security Check, Ransomware Readiness,
+  Compliance Lite, Vendor Risk Lite, Executive Cyber Report y AI Fraud Defense.
 - Seccion especializada para consultoria SPEI/SPID.
 - Paquetes comerciales y formulario de contacto con `mailto:`.
 
@@ -45,6 +48,13 @@ GitHub puede tardar de 1 a 5 minutos en publicar el primer deploy.
 CID-SI se presenta como software de desarrollo propio de DOGUI para apoyar la operacion de un Sistema de Gestion
 de Seguridad de la Informacion. Integra gestion de marco normativo, controles, evidencias, auditorias, incidentes,
 identidades, vulnerabilidades, datos personales, fraude, indicadores KPI/KRI/KCI, usuarios y datos maestros.
+
+## PyME
+
+El apartado PyME agrupa productos ligeros y comercialmente empaquetables para pequenas y medianas empresas. Incluye
+un producto estrella basado en WhatsApp, analisis de links y archivos, simulaciones de phishing, monitoreo de
+credenciales expuestas, revision de superficie expuesta, proteccion de marca, seguridad de correo, preparacion ante
+ransomware, cumplimiento basico, riesgo de proveedores, reporte ejecutivo y defensa contra fraude con IA.
 
 ## Pendientes de branding
 
