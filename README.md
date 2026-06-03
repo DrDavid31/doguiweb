@@ -13,6 +13,8 @@ Landing page estatica para DOGUI, enfocada en servicios de ciberseguridad, autom
   Compliance Lite, Vendor Risk Lite, Executive Cyber Report y AI Fraud Defense.
 - Apartado DOGUI Awareness con paquetes Starter, Plus y Pro, integracion con WhatsApp, catalogo de cursos,
   simulaciones de phishing, evaluaciones, constancias, reportes y dashboard.
+- Apartado DOGUI vCISO con direccion externa de ciberseguridad, diagnostico, roadmap, politicas, gestion de riesgos,
+  comite mensual, supervision de proveedores, auditorias e incidentes.
 - Seccion especializada para consultoria SPEI/SPID.
 - Paquetes comerciales y formulario de contacto con `mailto:`.
 
@@ -63,6 +65,13 @@ ransomware, cumplimiento basico, riesgo de proveedores, reporte ejecutivo y defe
 Programa de concientizacion en ciberseguridad para empresas. Incluye cursos, microcapacitaciones, evaluaciones,
 constancias, simulaciones de phishing, campanas por correo y WhatsApp, reportes ejecutivos, recomendaciones por area,
 seguimiento de avance y metricas de riesgo. Se presenta en tres paquetes: Starter, Plus y Pro.
+
+## DOGUI vCISO
+
+Direccion de ciberseguridad externa para empresas que necesitan estrategia, control y cumplimiento sin contratar un
+CISO interno. Incluye diagnostico de madurez, roadmap de 90 dias, gobierno y politicas, gestion de riesgos, comite
+mensual, supervision de proveedores, preparacion para auditorias y coordinacion ejecutiva ante incidentes. Se presenta
+en tres paquetes: Starter, Plus y Pro.
 
 ## Pendientes de branding
 
