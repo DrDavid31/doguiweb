@@ -6,7 +6,9 @@ Landing page estatica para DOGUI, enfocada en servicios de ciberseguridad, autom
 
 - Hero comercial con imagen de operaciones de ciberseguridad.
 - Secciones de servicios: SOC/MDR, pentesting, Blue Team, respuesta a incidentes, GRC y capacitacion.
-- Productos/plataformas: CTI, EDR, SIEM, dark web, GRC y SOAR.
+- Productos/plataformas: CTI, EDR, SIEM, Threat Exposure Monitoring, GRC y SOAR.
+- Seccion DOGUI Threat Exposure Monitoring para monitoreo de filtraciones, dark web, deep web, Telegram publico,
+  repositorios, dominios sospechosos, documentos expuestos, alertas y reportes ejecutivos.
 - Apartado SGSI con CID-SI, software de desarrollo propio para gestion de seguridad de la informacion.
 - Apartado PyME con productos empaquetados: WhatsApp Security Assistant, Link & File Checker, Phishing Simulator,
   Credential Exposure Monitor, Exposure Scan, Brand Protection, Email Security Check, Ransomware Readiness,
@@ -72,6 +74,13 @@ Direccion de ciberseguridad externa para empresas que necesitan estrategia, cont
 CISO interno. Incluye diagnostico de madurez, roadmap de 90 dias, gobierno y politicas, gestion de riesgos, comite
 mensual, supervision de proveedores, preparacion para auditorias y coordinacion ejecutiva ante incidentes. Se presenta
 en tres paquetes: Starter, Plus y Pro.
+
+## DOGUI Threat Exposure Monitoring
+
+Servicio de monitoreo de exposicion digital para detectar credenciales filtradas, menciones de marca, documentos
+expuestos, dominios parecidos, canales publicos de Telegram, repositorios publicos, ransomware leak sites y fuentes de
+filtraciones. Se presenta como producto estrella, se profundiza en una seccion propia y se agrega como paquete comercial
+de Exposicion digital.
 
 ## Pendientes de branding
 

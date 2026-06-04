@@ -23,6 +23,11 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 18px);
+}
+
+section[id] {
+  scroll-margin-top: calc(var(--header-h) + 18px);
 }
 
 body {
@@ -348,6 +353,13 @@ h3 {
   font-weight: 900;
 }
 
+.hero-signal {
+  max-width: 690px;
+  margin: 16px 0 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.98rem;
+}
+
 .hero-panel {
   align-self: center;
   min-height: 360px;
@@ -534,6 +546,9 @@ h3 {
 .service-card p,
 .product-card p,
 .package-card p,
+.product-card strong,
+.threat-section p,
+.threat-section strong,
 .finance-list p,
 .method-list p,
 .contact-copy p {
@@ -541,6 +556,9 @@ h3 {
 }
 
 .service-card ul,
+.product-card ul,
+.threat-columns ul,
+.threat-plans ul,
 .package-card ul {
   display: grid;
   gap: 9px;
@@ -550,6 +568,9 @@ h3 {
 }
 
 .service-card li,
+.product-card li,
+.threat-columns li,
+.threat-plans li,
 .package-card li {
   position: relative;
   padding-left: 18px;
@@ -557,6 +578,9 @@ h3 {
 }
 
 .service-card li::before,
+.product-card li::before,
+.threat-columns li::before,
+.threat-plans li::before,
 .package-card li::before {
   position: absolute;
   top: 0.62em;
@@ -582,6 +606,19 @@ h3 {
   box-shadow: 0 18px 52px rgba(18, 32, 46, 0.08);
 }
 
+.product-card-featured {
+  grid-column: span 2;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  color: rgba(255, 255, 255, 0.78);
+  background:
+    linear-gradient(135deg, rgba(84, 209, 140, 0.2), rgba(37, 196, 219, 0.09)),
+    var(--panel);
+  border-color: rgba(84, 209, 140, 0.34);
+  box-shadow: var(--shadow);
+}
+
 .product-card span {
   display: inline-grid;
   place-items: center;
@@ -604,6 +641,191 @@ h3 {
 .product-card:nth-child(3n) span {
   background: #fff0cf;
   border-color: #f4d590;
+}
+
+.product-card.product-card-featured span {
+  color: #07131a;
+  background: var(--green);
+  border-color: rgba(84, 209, 140, 0.52);
+}
+
+.product-card-featured h3 {
+  color: var(--white);
+  font-size: clamp(1.3rem, 2.3vw, 2rem);
+}
+
+.product-card-featured p,
+.product-card-featured li {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.product-card-featured ul {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 4px;
+}
+
+.product-card-featured strong {
+  color: var(--green);
+  font-size: 0.98rem;
+}
+
+.product-card:not(.product-card-featured) li {
+  color: #415067;
+}
+
+.product-card:not(.product-card-featured) li::before {
+  background: var(--green);
+}
+
+.threat-section {
+  padding: clamp(72px, 10vw, 126px) clamp(18px, 5vw, 72px);
+  color: rgba(255, 255, 255, 0.78);
+  background:
+    linear-gradient(135deg, rgba(37, 196, 219, 0.14), transparent 34%),
+    linear-gradient(180deg, #0a1118, #101824 52%, #0d1722);
+}
+
+.threat-section h2,
+.threat-section h3 {
+  color: var(--white);
+}
+
+.threat-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.52fr);
+  gap: clamp(28px, 5vw, 76px);
+  align-items: stretch;
+  margin-bottom: 28px;
+}
+
+.threat-hero h2 {
+  width: min(940px, 100%);
+}
+
+.threat-hero p {
+  width: min(880px, 100%);
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.threat-hero aside {
+  min-height: 320px;
+  display: grid;
+  align-content: center;
+  gap: 14px;
+  padding: 28px;
+  background:
+    linear-gradient(145deg, rgba(84, 209, 140, 0.18), rgba(37, 196, 219, 0.1)),
+    rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(84, 209, 140, 0.26);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.threat-hero aside span,
+.threat-plans span,
+.threat-flow span {
+  color: var(--green);
+  font-size: 0.76rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.threat-hero aside h3 {
+  margin-bottom: 0;
+  font-size: clamp(1.4rem, 2.3vw, 2.08rem);
+}
+
+.threat-hero aside p {
+  width: auto;
+  margin: 0;
+}
+
+.threat-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.threat-columns article {
+  padding: 26px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 8px;
+}
+
+.threat-columns ul {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.threat-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.threat-flow article {
+  min-height: 238px;
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+}
+
+.threat-flow h3 {
+  margin-bottom: 0;
+  font-size: 1.02rem;
+  line-height: 1.15;
+}
+
+.threat-flow p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.93rem;
+}
+
+.threat-plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.threat-plans article {
+  min-height: 520px;
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 26px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 8px;
+}
+
+.threat-plan-highlight {
+  background:
+    linear-gradient(135deg, rgba(84, 209, 140, 0.2), rgba(37, 196, 219, 0.08)),
+    rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(84, 209, 140, 0.32) !important;
+}
+
+.threat-plans h3 {
+  margin-bottom: 0;
+}
+
+.threat-plans p,
+.threat-plans li {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.threat-plans strong {
+  align-self: end;
+  color: var(--green);
+  font-size: 0.93rem;
 }
 
 .impact-section {
@@ -1640,7 +1862,7 @@ h3 {
 
 .package-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -1920,6 +2142,8 @@ h3 {
   .awareness-summary,
   .awareness-plans,
   .awareness-map,
+  .threat-flow,
+  .threat-plans,
   .vciso-plans,
   .vciso-map {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1939,6 +2163,8 @@ h3 {
   .pyme-hero-card,
   .pyme-focus,
   .awareness-whatsapp,
+  .threat-hero,
+  .threat-columns,
   .vciso-hero,
   .vciso-problem,
   .vciso-ecosystem,
@@ -2065,6 +2291,7 @@ h3 {
   .sgsi-section,
   .pyme-section,
   .awareness-section,
+  .threat-section,
   .vciso-section,
   .finance-band,
   .contact-section {
@@ -2080,6 +2307,8 @@ h3 {
   .awareness-plans,
   .course-grid,
   .awareness-map,
+  .threat-flow,
+  .threat-plans,
   .vciso-deliverables,
   .vciso-plans,
   .vciso-map,
@@ -2095,6 +2324,15 @@ h3 {
   }
 
   .vciso-problem ul {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card-featured {
+    grid-column: auto;
+  }
+
+  .product-card-featured ul,
+  .threat-columns ul {
     grid-template-columns: 1fr;
   }
 
