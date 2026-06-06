@@ -6,33 +6,35 @@
     <title>DOGUI | Ciberseguridad, automatizacion y consultoria SPEI/SPID</title>
     <meta
       name="description"
-      content="DOGUI protege empresas e instituciones financieras con servicios de ciberseguridad, SGSI con software propio CID-SI, SOC/MDR, pentesting, automatizacion y consultoria SPEI/SPID."
+      content="DOGUI protege empresas con SOC/MDR, Threat Exposure Monitoring, vCISO, SGSI con software propio CID-SI, awareness, automatizacion y consultoria SPEI/SPID."
     />
     <meta property="og:title" content="DOGUI | Ciberseguridad y consultoria SPEI/SPID" />
     <meta
       property="og:description"
-      content="Servicios gestionados, SGSI con software propio CID-SI, automatizacion y consultoria especializada para operaciones criticas."
+      content="Servicios gestionados, monitoreo de exposicion digital, SGSI con software propio CID-SI, automatizacion y consultoria especializada para operaciones criticas."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="assets/dogui-hero.png" />
     <meta name="theme-color" content="#0a1118" />
+    <meta name="color-scheme" content="dark light" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" href="assets/dogui-hero.png" as="image" />
+    <link rel="preload" href="assets/dogui-hero.webp" as="image" type="image/webp" fetchpriority="high" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#contacto">Saltar a contacto</a>
     <header class="site-header" data-header>
       <a class="brand" href="#inicio" aria-label="DOGUI inicio">
         <span class="brand-mark">D</span>
         <span class="brand-text">DOGUI</span>
       </a>
 
-      <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-nav-toggle>
+      <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-navigation" data-nav-toggle>
         <span></span>
         <span></span>
       </button>
 
-      <nav class="main-nav" data-nav>
+      <nav class="main-nav" id="site-navigation" data-nav>
         <a href="#servicios">Servicios</a>
         <a href="#productos">Productos</a>
         <a href="#exposicion">Exposicion</a>
@@ -50,7 +52,8 @@
     <main id="inicio">
       <section class="hero" aria-labelledby="hero-title">
         <picture class="hero-media" aria-hidden="true">
-          <img src="assets/dogui-hero.png" alt="" />
+          <source srcset="assets/dogui-hero.webp" type="image/webp" />
+          <img src="assets/dogui-hero.png" width="1672" height="941" alt="" decoding="async" fetchpriority="high" />
         </picture>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -82,7 +85,10 @@
           </div>
 
           <aside class="hero-panel" aria-label="Vista ejecutiva de DOGUI">
-            <span class="panel-status">Operacion lista para presentar</span>
+            <div class="panel-topline">
+              <span class="panel-status">Operacion lista para presentar</span>
+              <span class="panel-pill">MX</span>
+            </div>
             <h2>Defensa integral para entornos criticos</h2>
             <div class="panel-metrics">
               <div>
@@ -96,6 +102,20 @@
               <div>
                 <strong>03</strong>
                 <span>Automatizar</span>
+              </div>
+            </div>
+            <div class="panel-stack" aria-label="Capas DOGUI">
+              <div>
+                <span>Exposicion digital</span>
+                <strong>Dark web, Telegram y filtraciones</strong>
+              </div>
+              <div>
+                <span>Operacion</span>
+                <strong>SOC/MDR, respuesta y automatizacion</strong>
+              </div>
+              <div>
+                <span>Direccion</span>
+                <strong>vCISO, SGSI y cumplimiento</strong>
               </div>
             </div>
             <p>SOC, inteligencia, pruebas ofensivas y consultoria financiera coordinadas en un mismo plan.</p>
@@ -115,6 +135,10 @@
         <div>
           <strong>MX</strong>
           <span>Enfoque para operacion financiera mexicana</span>
+        </div>
+        <div>
+          <strong>90</strong>
+          <span>Roadmap priorizado en dias</span>
         </div>
       </section>
 
@@ -1205,15 +1229,15 @@
         <form class="lead-form" data-lead-form>
           <label>
             Nombre
-            <input name="name" type="text" autocomplete="name" required />
+            <input name="name" type="text" autocomplete="name" maxlength="80" required />
           </label>
           <label>
             Empresa
-            <input name="company" type="text" autocomplete="organization" required />
+            <input name="company" type="text" autocomplete="organization" maxlength="100" required />
           </label>
           <label>
             Correo
-            <input name="email" type="email" autocomplete="email" required />
+            <input name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" required />
           </label>
           <label>
             Servicio de interes
@@ -1237,10 +1261,10 @@
           </label>
           <label class="full">
             Mensaje
-            <textarea name="message" rows="5" placeholder="Cuentanos tu necesidad, urgencia o contexto"></textarea>
+            <textarea name="message" rows="5" maxlength="1200" placeholder="Cuentanos tu necesidad, urgencia o contexto"></textarea>
           </label>
           <button class="button button-primary full" type="submit">Enviar solicitud</button>
-          <p class="form-note" data-form-note>El formulario abre un correo listo para enviar.</p>
+          <p class="form-note" data-form-note role="status" aria-live="polite">El formulario abre un correo listo para enviar.</p>
         </form>
       </section>
     </main>
@@ -1254,8 +1278,8 @@
       <a href="#contacto">Agenda tu diagnostico</a>
     </footer>
 
-    <a class="floating-cta" href="#contacto">Agendar diagnostico</a>
+    <a class="floating-cta" href="#contacto" aria-label="Agendar diagnostico DOGUI">Agendar diagnostico</a>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

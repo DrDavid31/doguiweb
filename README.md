@@ -9,6 +9,7 @@ Landing page estatica para DOGUI, enfocada en servicios de ciberseguridad, autom
 - Productos/plataformas: CTI, EDR, SIEM, Threat Exposure Monitoring, GRC y SOAR.
 - Seccion DOGUI Threat Exposure Monitoring para monitoreo de filtraciones, dark web, deep web, Telegram publico,
   repositorios, dominios sospechosos, documentos expuestos, alertas y reportes ejecutivos.
+- Hero optimizado con imagen WebP y PNG de respaldo para mejorar carga en GitHub Pages.
 - Apartado SGSI con CID-SI, software de desarrollo propio para gestion de seguridad de la informacion.
 - Apartado PyME con productos empaquetados: WhatsApp Security Assistant, Link & File Checker, Phishing Simulator,
   Credential Exposure Monitor, Exposure Scan, Brand Protection, Email Security Check, Ransomware Readiness,
@@ -46,6 +47,7 @@ GitHub puede tardar de 1 a 5 minutos en publicar el primer deploy.
 - `index.html`
 - `styles.css`
 - `script.js`
+- `assets/dogui-hero.webp`
 - `assets/dogui-hero.png`
 - `assets/favicon.svg`
 
