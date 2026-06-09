@@ -4,17 +4,13 @@
   --panel: #142235;
   --panel-strong: #102c38;
   --line: rgba(255, 255, 255, 0.16);
-  --line-soft: #dfe9ef;
   --muted: #637083;
   --text: #182230;
   --soft: #f5f8fa;
-  --surface: #ffffff;
-  --surface-2: #eef4f7;
   --white: #ffffff;
   --cyan: #25c4db;
   --green: #54d18c;
   --amber: #f6b84b;
-  --red: #ff6b5e;
   --shadow: 0 24px 70px rgba(8, 16, 26, 0.22);
   --shadow-soft: 0 18px 54px rgba(18, 32, 46, 0.1);
   --radius: 8px;
@@ -39,10 +35,6 @@ body {
   background: var(--white);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-}
-
-body.has-floating-cta {
-  padding-bottom: 0;
 }
 
 body.nav-open {

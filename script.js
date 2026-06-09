@@ -9,10 +9,20 @@ const navLinks = nav ? Array.from(nav.querySelectorAll('a[href^="#"]')) : [];
 const navTargets = navLinks
   .map((link) => {
     const selector = link.getAttribute("href");
-    const target = selector ? document.querySelector(selector) : null;
+    const target = selector?.startsWith("#") ? document.getElementById(selector.slice(1)) : null;
     return target ? { link, target } : null;
   })
   .filter(Boolean);
+
+const getHashTarget = (hash = window.location.hash) => {
+  if (!hash || hash === "#") return null;
+
+  try {
+    return document.getElementById(decodeURIComponent(hash.slice(1)));
+  } catch {
+    return null;
+  }
+};
 
 const setActiveNav = () => {
   const marker = window.scrollY + (header?.offsetHeight || 0) + Math.min(360, window.innerHeight * 0.45);
@@ -49,18 +59,22 @@ const closeNav = () => {
   navToggle?.setAttribute("aria-expanded", "false");
 };
 
-const jumpToInitialHash = () => {
-  if (!window.location.hash) return;
+const scrollToTarget = (target) => {
+  const headerHeight = header?.offsetHeight || 0;
+  const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerHeight - 12);
+  window.scrollTo({ top, behavior: "auto" });
+  setHeaderState();
+};
 
-  const target = document.querySelector(window.location.hash);
+const jumpToInitialHash = () => {
+  const target = getHashTarget();
   if (!target) return;
 
   const root = document.documentElement;
   const previousScrollBehavior = root.style.scrollBehavior;
   root.style.scrollBehavior = "auto";
-  target.scrollIntoView({ block: "start" });
+  scrollToTarget(target);
   root.style.scrollBehavior = previousScrollBehavior;
-  setHeaderState();
 };
 
 setHeaderState();
@@ -75,9 +89,18 @@ navToggle?.addEventListener("click", () => {
   navToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
-nav?.addEventListener("click", (event) => {
-  const link = event.target instanceof Element ? event.target.closest("a") : null;
-  if (link) closeNav();
+document.addEventListener("click", (event) => {
+  const link = event.target instanceof Element ? event.target.closest('a[href^="#"]') : null;
+  if (!link) return;
+
+  const hash = link.getAttribute("href");
+  const target = hash ? getHashTarget(hash) : null;
+  if (!target) return;
+
+  event.preventDefault();
+  closeNav();
+  history.pushState(null, "", hash);
+  scrollToTarget(target);
 });
 
 window.addEventListener("keydown", (event) => {

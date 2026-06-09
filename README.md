@@ -10,7 +10,7 @@ Landing page estatica para DOGUI, enfocada en servicios de ciberseguridad, autom
 - Seccion DOGUI Threat Exposure Monitoring para monitoreo de filtraciones, dark web, deep web, Telegram publico,
   repositorios, dominios sospechosos, documentos expuestos, alertas y reportes ejecutivos.
 - Hero optimizado con imagen WebP y PNG de respaldo para mejorar carga en GitHub Pages.
-- Apartado SGSI con CID-SI, software de desarrollo propio para gestion de seguridad de la informacion.
+- Apartado SGSI con CIDSI, software de desarrollo propio para gestion de seguridad de la informacion.
 - Apartado PyME con productos empaquetados: WhatsApp Security Assistant, Link & File Checker, Phishing Simulator,
   Credential Exposure Monitor, Exposure Scan, Brand Protection, Email Security Check, Ransomware Readiness,
   Compliance Lite, Vendor Risk Lite, Executive Cyber Report y AI Fraud Defense.
@@ -51,9 +51,9 @@ GitHub puede tardar de 1 a 5 minutos en publicar el primer deploy.
 - `assets/dogui-hero.png`
 - `assets/favicon.svg`
 
-## SGSI / CID-SI
+## SGSI / CIDSI
 
-CID-SI se presenta como software de desarrollo propio de DOGUI para apoyar la operacion de un Sistema de Gestion
+CIDSI se presenta como software de desarrollo propio de DOGUI para apoyar la operacion de un Sistema de Gestion
 de Seguridad de la Informacion. Integra gestion de marco normativo, controles, evidencias, auditorias, incidentes,
 identidades, vulnerabilidades, datos personales, fraude, indicadores KPI/KRI/KCI, usuarios y datos maestros.
 
