@@ -34,8 +34,15 @@ const setActiveNav = () => {
     }
   });
 
-  navLinks.forEach((link) => link.classList.remove("is-active"));
-  activeItem?.link.classList.add("is-active");
+  navLinks.forEach((link) => {
+    link.classList.remove("is-active");
+    link.removeAttribute("aria-current");
+  });
+
+  if (activeItem) {
+    activeItem.link.classList.add("is-active");
+    activeItem.link.setAttribute("aria-current", "page");
+  }
 };
 
 const setHeaderState = () => {

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://drdavid31.github.io/doguiweb/sitemap.xml

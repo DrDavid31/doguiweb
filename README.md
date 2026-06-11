@@ -5,6 +5,7 @@ Landing page estatica para DOGUI, enfocada en servicios de ciberseguridad, autom
 ## Contenido
 
 - Hero comercial con imagen de operaciones de ciberseguridad.
+- Metadatos SEO, Open Graph, Twitter Card, schema JSON-LD, `robots.txt` y `sitemap.xml` para GitHub Pages.
 - Secciones de servicios: SOC/MDR, pentesting, Blue Team, respuesta a incidentes, GRC y capacitacion.
 - Productos/plataformas: CTI, EDR, SIEM, Threat Exposure Monitoring, GRC y SOAR.
 - Seccion DOGUI Threat Exposure Monitoring para monitoreo de filtraciones, dark web, deep web, Telegram publico,
@@ -47,6 +48,8 @@ GitHub puede tardar de 1 a 5 minutos en publicar el primer deploy.
 - `index.html`
 - `styles.css`
 - `script.js`
+- `robots.txt`
+- `sitemap.xml`
 - `assets/dogui-hero.webp`
 - `assets/dogui-hero.png`
 - `assets/favicon.svg`
