@@ -6,6 +6,7 @@ Landing page estatica para DOGUI, enfocada en servicios de ciberseguridad, autom
 
 - Hero comercial con imagen de operaciones de ciberseguridad.
 - Metadatos SEO, Open Graph, Twitter Card, schema JSON-LD, `robots.txt` y `sitemap.xml` para GitHub Pages.
+- Iconografia SVG integrada en hero, chips, tarjetas de servicios, productos y paquetes comerciales.
 - Secciones de servicios: SOC/MDR, pentesting, Blue Team, respuesta a incidentes, GRC y capacitacion.
 - Productos/plataformas: CTI, EDR, SIEM, Threat Exposure Monitoring, GRC y SOAR.
 - Seccion DOGUI Threat Exposure Monitoring para monitoreo de filtraciones, dark web, deep web, Telegram publico,
