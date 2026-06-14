@@ -46,13 +46,6 @@ img {
   max-width: 100%;
 }
 
-.icon-sprite {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
 .icon {
   width: 1em;
   height: 1em;
@@ -617,6 +610,13 @@ h3 {
 
 .section {
   padding: clamp(70px, 10vw, 120px) clamp(18px, 5vw, 72px);
+}
+
+@supports (content-visibility: auto) {
+  main > section:not(.hero):not(.trust-strip):not(.intro) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 920px;
+  }
 }
 
 .section-heading {
