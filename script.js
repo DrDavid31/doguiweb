@@ -139,7 +139,34 @@ if ("IntersectionObserver" in window) {
   }
 }
 
-leadForm?.addEventListener("submit", (event) => {
+const getLeadPayload = (formData) => ({
+  name: String(formData.get("name") || "").trim(),
+  company: String(formData.get("company") || "").trim(),
+  email: String(formData.get("email") || "").trim(),
+  service: String(formData.get("service") || "").trim(),
+  message: String(formData.get("message") || "").trim(),
+  website: String(formData.get("website") || "").trim(),
+  source: "doguiweb",
+});
+
+const openMailFallback = (lead) => {
+  const subject = `Solicitud DOGUI - ${lead.service || "Ciberseguridad"}`;
+  const bodyLines = [
+    `Nombre: ${lead.name}`,
+    `Empresa: ${lead.company}`,
+    `Correo: ${lead.email}`,
+    `Servicio: ${lead.service}`,
+    "",
+    "Mensaje:",
+    lead.message || "Quiero que DOGUI me contacte para definir alcance.",
+  ];
+
+  window.location.href = `mailto:ventas@dogui.mx?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+    bodyLines.join("\n"),
+  )}`;
+};
+
+leadForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   if (!leadForm.checkValidity()) {
@@ -147,31 +174,40 @@ leadForm?.addEventListener("submit", (event) => {
     return;
   }
 
-  const formData = new FormData(leadForm);
-  const name = String(formData.get("name") || "").trim();
-  const company = String(formData.get("company") || "").trim();
-  const email = String(formData.get("email") || "").trim();
-  const service = String(formData.get("service") || "").trim();
-  const message = String(formData.get("message") || "").trim();
-
-  const subject = `Solicitud DOGUI - ${service || "Ciberseguridad"}`;
-  const bodyLines = [
-    `Nombre: ${name}`,
-    `Empresa: ${company}`,
-    `Correo: ${email}`,
-    `Servicio: ${service}`,
-    "",
-    "Mensaje:",
-    message || "Quiero que DOGUI me contacte para definir alcance.",
-  ];
-
-  const mailto = `mailto:ventas@dogui.mx?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-    bodyLines.join("\n"),
-  )}`;
+  const submitButton = leadForm.querySelector('button[type="submit"]');
+  const lead = getLeadPayload(new FormData(leadForm));
 
   if (formNote) {
-    formNote.textContent = "Listo: se abrio un correo con tu solicitud.";
+    formNote.textContent = "Enviando solicitud...";
   }
 
-  window.location.href = mailto;
+  submitButton?.setAttribute("disabled", "true");
+
+  try {
+    if (window.DOGUIApiAvailable === false) {
+      throw new Error("lead_api_unavailable");
+    }
+
+    const response = await fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(lead),
+    });
+
+    if (!response.ok) throw new Error("lead_api_unavailable");
+
+    if (formNote) {
+      formNote.textContent = "Listo: recibimos tu solicitud y DOGUI te contactara.";
+    }
+
+    leadForm.reset();
+  } catch {
+    if (formNote) {
+      formNote.textContent = "No se encontro el backend; abrimos correo como respaldo.";
+    }
+
+    openMailFallback(lead);
+  } finally {
+    submitButton?.removeAttribute("disabled");
+  }
 });

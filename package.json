@@ -1,0 +1,30 @@
+{
+  "name": "doguiweb",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "packageManager": "pnpm@11.0.7",
+  "description": "DOGUI cybersecurity SaaS base with static landing and Vercel serverless APIs.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build-optimized.mjs",
+    "check": "node --check script.js && node scripts/check-project.mjs",
+    "dev": "vercel dev",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "@clerk/backend": "^3.7.0",
+    "@pinecone-database/pinecone": "^7.2.0",
+    "@sentry/node": "^10.57.0",
+    "@supabase/supabase-js": "^2.108.1",
+    "posthog-node": "^5.37.0",
+    "resend": "^6.12.4",
+    "stripe": "^22.2.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "vercel": "^54.14.0"
+  }
+}

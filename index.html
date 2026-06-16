@@ -1294,6 +1294,10 @@
         </div>
 
         <form class="lead-form" data-lead-form>
+          <label class="hp-field" aria-hidden="true">
+            Sitio web
+            <input name="website" type="text" tabindex="-1" autocomplete="off" />
+          </label>
           <label>
             Nombre
             <input name="name" type="text" autocomplete="name" maxlength="80" required />
@@ -1331,7 +1335,7 @@
             <textarea name="message" rows="5" maxlength="1200" placeholder="Cuentanos tu necesidad, urgencia o contexto"></textarea>
           </label>
           <button class="button button-primary full" type="submit">Enviar solicitud</button>
-          <p class="form-note" data-form-note role="status" aria-live="polite">El formulario abre un correo listo para enviar.</p>
+          <p class="form-note" data-form-note role="status" aria-live="polite">El formulario puede guardar la solicitud en el backend o abrir correo como respaldo.</p>
         </form>
       </section>
     </main>
@@ -1348,5 +1352,6 @@
     <a class="floating-cta" href="#contacto" aria-label="Agendar diagnostico DOGUI">Agendar diagnostico</a>
 
     <script src="script.js" defer></script>
+    <script src="assets/client-integrations.js" defer></script>
   </body>
 </html>

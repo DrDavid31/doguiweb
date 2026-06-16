@@ -1,102 +1,153 @@
-# DOGUI Web
+# DOGUI Web + SaaS Base
 
-Landing page estatica para DOGUI, enfocada en servicios de ciberseguridad, automatizacion y consultoria SPEI/SPID.
+Landing optimizada y base SaaS para servicios de ciberseguridad DOGUI: monitoreo OSINT, analisis de dominios, alertamiento, dashboards, bots, reportes, awareness, vCISO, SGSI/CIDSI y servicios administrados.
 
-## Contenido
+## Stack
 
-- Hero comercial con imagen de operaciones de ciberseguridad.
-- Metadatos SEO, Open Graph, Twitter Card, schema JSON-LD, `robots.txt` y `sitemap.xml` para GitHub Pages.
-- Iconografia SVG integrada en hero, chips, tarjetas de servicios, productos y paquetes comerciales.
-- Assets optimizados: hero WebP para escritorio, hero WebP movil, JPG fallback y JPG social para Open Graph/Twitter.
-- CSS de produccion minificado con `build_optimized.py`; `styles.css` queda como fuente editable.
-- Secciones de servicios: SOC/MDR, pentesting, Blue Team, respuesta a incidentes, GRC y capacitacion.
-- Productos/plataformas: CTI, EDR, SIEM, Threat Exposure Monitoring, GRC y SOAR.
-- Seccion DOGUI Threat Exposure Monitoring para monitoreo de filtraciones, dark web, deep web, Telegram publico,
-  repositorios, dominios sospechosos, documentos expuestos, alertas y reportes ejecutivos.
-- Hero optimizado con imagen WebP y PNG de respaldo para mejorar carga en GitHub Pages.
-- Apartado SGSI con CIDSI, software de desarrollo propio para gestion de seguridad de la informacion.
-- Apartado PyME con productos empaquetados: WhatsApp Security Assistant, Link & File Checker, Phishing Simulator,
-  Credential Exposure Monitor, Exposure Scan, Brand Protection, Email Security Check, Ransomware Readiness,
-  Compliance Lite, Vendor Risk Lite, Executive Cyber Report y AI Fraud Defense.
-- Apartado DOGUI Awareness con paquetes Starter, Plus y Pro, integracion con WhatsApp, catalogo de cursos,
-  simulaciones de phishing, evaluaciones, constancias, reportes y dashboard.
-- Apartado DOGUI vCISO con direccion externa de ciberseguridad, diagnostico, roadmap, politicas, gestion de riesgos,
-  comite mensual, supervision de proveedores, auditorias e incidentes.
-- Seccion especializada para consultoria SPEI/SPID.
-- Paquetes comerciales y formulario de contacto con `mailto:`.
+- Backend: Supabase.
+- Despliegue: Vercel.
+- Pagos: Stripe.
+- Versionamiento: GitHub.
+- Emails transaccionales: Resend.
+- Dominios: Namecheap.
+- Autenticacion: Clerk.
+- DNS y proteccion: Cloudflare.
+- Analiticas: PostHog.
+- Errores: Sentry.
+- Busqueda semantica: Pinecone.
 
-## Uso local
-
-Abre `index.html` directamente en el navegador.
-
-## Publicar en GitHub Pages
-
-1. Entra al repositorio `doguiweb` en GitHub.
-2. Ve a `Settings`.
-3. En el menu lateral abre `Pages`.
-4. En `Build and deployment`, selecciona `Deploy from a branch`.
-5. En `Branch`, elige `main` y carpeta `/ (root)`.
-6. Presiona `Save`.
-
-La URL quedara con este formato:
+## Estructura
 
 ```text
-https://TU-USUARIO.github.io/doguiweb/
+index.html                 Landing comercial.
+styles.css                 CSS fuente editable.
+styles.min.css             CSS de produccion.
+script.js                  UI, navegacion y formulario con fallback mailto.
+assets/client-integrations.js
+assets/icons.svg
+api/                       Vercel Serverless Functions.
+api/_lib/                  Clientes y utilidades compartidas.
+docs/architecture.md       Arquitectura propuesta.
+docs/devsecops-checklist.md
+SECURITY.md
+.env.example
+vercel.json
 ```
 
-GitHub puede tardar de 1 a 5 minutos en publicar el primer deploy.
+## APIs incluidas
 
-## Archivos principales
+- `GET /api/health`: estado de integraciones.
+- `GET /api/public-config`: configuracion publica no sensible.
+- `POST /api/leads`: captura leads, guarda en Supabase y notifica por Resend si esta configurado.
+- `POST /api/events`: eventos server-side hacia PostHog.
+- `GET /api/auth/me`: validacion de sesion Clerk por Bearer token.
+- `POST /api/billing/create-checkout-session`: crea Stripe Checkout para suscripciones.
+- `POST /api/webhooks/stripe`: recibe webhooks firmados de Stripe.
+- `POST /api/search/semantic`: busqueda vectorial con Pinecone protegida con Clerk.
 
-- `index.html`
-- `styles.css`
-- `styles.min.css`
-- `script.js`
-- `build_optimized.py`
-- `robots.txt`
-- `sitemap.xml`
-- `assets/icons.svg`
-- `assets/dogui-hero.webp`
-- `assets/dogui-hero-mobile.webp`
-- `assets/dogui-hero.jpg`
-- `assets/dogui-hero-og.jpg`
-- `assets/favicon.svg`
+## Instalacion local
 
-## SGSI / CIDSI
+Este proyecto usa `pnpm`.
 
-CIDSI se presenta como software de desarrollo propio de DOGUI para apoyar la operacion de un Sistema de Gestion
-de Seguridad de la Informacion. Integra gestion de marco normativo, controles, evidencias, auditorias, incidentes,
-identidades, vulnerabilidades, datos personales, fraude, indicadores KPI/KRI/KCI, usuarios y datos maestros.
+```bash
+pnpm install
+pnpm run build
+pnpm run check
+pnpm dev
+```
 
-## PyME
+Si solo quieres abrir la landing sin APIs, puedes servir la carpeta como estatico. El formulario intentara `/api/leads`; si no existe, abre correo como respaldo.
 
-El apartado PyME agrupa productos ligeros y comercialmente empaquetables para pequenas y medianas empresas. Incluye
-un producto estrella basado en WhatsApp, analisis de links y archivos, simulaciones de phishing, monitoreo de
-credenciales expuestas, revision de superficie expuesta, proteccion de marca, seguridad de correo, preparacion ante
-ransomware, cumplimiento basico, riesgo de proveedores, reporte ejecutivo y defensa contra fraude con IA.
+## Variables de entorno
 
-## DOGUI Awareness
+Copia `.env.example` a `.env.local` en Vercel/local y completa las claves reales.
 
-Programa de concientizacion en ciberseguridad para empresas. Incluye cursos, microcapacitaciones, evaluaciones,
-constancias, simulaciones de phishing, campanas por correo y WhatsApp, reportes ejecutivos, recomendaciones por area,
-seguimiento de avance y metricas de riesgo. Se presenta en tres paquetes: Starter, Plus y Pro.
+Variables principales:
 
-## DOGUI vCISO
+- `APP_URL`
+- `ALLOWED_ORIGINS`
+- `SUPABASE_URL`
+- `SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `CLERK_PUBLISHABLE_KEY`
+- `CLERK_SECRET_KEY`
+- `STRIPE_SECRET_KEY`
+- `STRIPE_WEBHOOK_SECRET`
+- `STRIPE_PRICE_ESSENTIAL`
+- `STRIPE_PRICE_PLUS`
+- `STRIPE_PRICE_PRO`
+- `STRIPE_PRICE_EXPOSURE`
+- `STRIPE_PRICE_VCISO`
+- `RESEND_API_KEY`
+- `RESEND_FROM_EMAIL`
+- `SALES_TO_EMAIL`
+- `POSTHOG_PROJECT_API_KEY`
+- `POSTHOG_HOST`
+- `SENTRY_DSN`
+- `PINECONE_API_KEY`
+- `PINECONE_INDEX_NAME`
+- `PINECONE_NAMESPACE`
 
-Direccion de ciberseguridad externa para empresas que necesitan estrategia, control y cumplimiento sin contratar un
-CISO interno. Incluye diagnostico de madurez, roadmap de 90 dias, gobierno y politicas, gestion de riesgos, comite
-mensual, supervision de proveedores, preparacion para auditorias y coordinacion ejecutiva ante incidentes. Se presenta
-en tres paquetes: Starter, Plus y Pro.
+## Supabase
 
-## DOGUI Threat Exposure Monitoring
+Tablas iniciales sugeridas:
 
-Servicio de monitoreo de exposicion digital para detectar credenciales filtradas, menciones de marca, documentos
-expuestos, dominios parecidos, canales publicos de Telegram, repositorios publicos, ransomware leak sites y fuentes de
-filtraciones. Se presenta como producto estrella, se profundiza en una seccion propia y se agrega como paquete comercial
-de Exposicion digital.
+```sql
+create table if not exists leads (
+  id uuid primary key default gen_random_uuid(),
+  name text not null,
+  company text not null,
+  email text not null,
+  service text not null,
+  message text,
+  source text,
+  ip_address text,
+  user_agent text,
+  created_at timestamptz not null default now()
+);
 
-## Pendientes de branding
+create table if not exists billing_events (
+  id uuid primary key default gen_random_uuid(),
+  stripe_event_id text unique not null,
+  type text not null,
+  payload jsonb not null,
+  created_at timestamptz not null default now()
+);
+```
 
-- Sustituir el isotipo temporal por logotipo oficial.
-- Cambiar correo, telefono y datos legales reales.
-- Ajustar paleta final si DOGUI ya tiene manual de marca.
+Para dashboards por cliente, agrega despues `organizations`, `projects`, `assets`, `alerts`, `reports`, `incidents` y activa RLS por `organization_id`.
+
+## Vercel
+
+1. Conecta el repo de GitHub en Vercel.
+2. Framework preset: Other.
+3. Build command: `pnpm run build`.
+4. Output directory: `.`.
+5. Agrega las variables de `.env.example`.
+6. Configura dominio de Namecheap apuntando a Vercel.
+7. Si usas Cloudflare, deja DNS proxied y HTTPS activo.
+
+## Stripe
+
+- Crea productos/precios para planes DOGUI.
+- Copia los Price IDs a las variables `STRIPE_PRICE_*`.
+- Configura webhook a `/api/webhooks/stripe`.
+- Copia el signing secret a `STRIPE_WEBHOOK_SECRET`.
+
+## Seguridad
+
+- No subas `.env`.
+- Rota cualquier token compartido por chat.
+- Usa `SUPABASE_SERVICE_ROLE_KEY` solo en APIs.
+- Activa RLS en Supabase antes de guardar datos de clientes.
+- Configura SPF, DKIM y DMARC para Resend.
+- Mantén Cloudflare con HTTPS, WAF y rate limiting basico.
+- Revisa `docs/devsecops-checklist.md`.
+
+## Estado actual
+
+- Landing optimizada para GitHub Pages y Vercel.
+- API base lista para Vercel.
+- Integraciones preparadas para Supabase, Clerk, Stripe, Resend, PostHog, Sentry y Pinecone.
+- Formulario con backend `/api/leads` y fallback `mailto:`.
+- CSS de produccion generado con `scripts/build-optimized.mjs`.
