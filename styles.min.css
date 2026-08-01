@@ -242,6 +242,11 @@ h3 {
 .button .icon {
   width: 1.05rem;
   height: 1.05rem;
+  transition: transform var(--dur-md) var(--ease-out);
+}
+
+.button:hover .icon {
+  transform: translateX(3px);
 }
 
 .button:hover {
@@ -275,6 +280,17 @@ h3 {
 }
 
 /* --------------------------------- header --------------------------------- */
+
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 80ms linear;
+}
 
 .site-header {
   position: fixed;
@@ -317,6 +333,11 @@ h3 {
   background: var(--accent);
   border-radius: var(--radius-sm);
   font-size: 1.1rem;
+  transition: transform var(--dur-md) var(--ease-out);
+}
+
+.brand:hover .brand-mark {
+  transform: rotate(-8deg) scale(1.06);
 }
 
 .brand-text {
@@ -660,6 +681,45 @@ h3 {
   font-size: 0.92rem;
 }
 
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-copy-block > .eyebrow,
+.hero-copy-block > h1,
+.hero-copy-block > .hero-copy,
+.hero-copy-block > .hero-actions,
+.hero-panel {
+  animation: hero-rise 700ms var(--ease-out) both;
+}
+
+.hero-copy-block > .eyebrow {
+  animation-delay: 60ms;
+}
+
+.hero-copy-block > h1 {
+  animation-delay: 140ms;
+}
+
+.hero-copy-block > .hero-copy {
+  animation-delay: 240ms;
+}
+
+.hero-copy-block > .hero-actions {
+  animation-delay: 340ms;
+}
+
+.hero-panel {
+  animation-delay: 420ms;
+}
+
 /* ----------------------------- capability strip ---------------------------- */
 
 .capability-strip {
@@ -704,6 +764,13 @@ h3 {
   border-radius: var(--radius-full);
   font-size: 0.78rem;
   font-weight: 600;
+  transition: transform var(--dur-sm) var(--ease-out), border-color var(--dur-sm) ease, color var(--dur-sm) ease;
+}
+
+.capability-list span:hover {
+  color: var(--on-dark);
+  border-color: rgba(255, 95, 31, 0.4);
+  transform: translateY(-2px);
 }
 
 .capability-list .icon {
@@ -741,6 +808,18 @@ h3 {
   font-family: var(--font-mono);
   font-size: clamp(1.5rem, 2.6vw, 2.05rem);
   line-height: 1;
+}
+
+.trust-strip strong.count-ready {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(6px) scale(0.9);
+  transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out);
+}
+
+.trust-strip strong.count-ready.is-counted {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .trust-strip span {
@@ -813,6 +892,15 @@ h3 {
   color: var(--accent-ink);
   background: var(--accent);
   border-radius: var(--radius-sm);
+  transition: transform var(--dur-md) var(--ease-out);
+}
+
+.service-card:hover .card-icon,
+.product-card:hover .card-icon,
+.package-card:hover .card-icon,
+.pyme-product-grid article:hover .card-icon,
+.vciso-deliverables article:hover .card-icon {
+  transform: scale(1.08) rotate(-4deg);
 }
 
 .card-icon .icon {
@@ -904,6 +992,7 @@ h3 {
   background: rgba(255, 255, 255, 0.045);
   border: 1px solid var(--ink-line);
   transition:
+    opacity var(--dur-lg) var(--ease-out),
     transform var(--dur-md) var(--ease-out),
     background var(--dur-md) ease,
     border-color var(--dur-md) ease;
@@ -947,6 +1036,7 @@ h3 {
   border: 1px solid var(--paper-line);
   box-shadow: var(--shadow-md);
   transition:
+    opacity var(--dur-lg) var(--ease-out),
     transform var(--dur-md) var(--ease-out),
     border-color var(--dur-md) ease,
     box-shadow var(--dur-md) ease;
@@ -1141,7 +1231,7 @@ h3 {
   border: 1px solid var(--ink-line);
   border-top: 2px solid var(--accent);
   border-radius: var(--radius);
-  transition: transform var(--dur-md) var(--ease-out), background var(--dur-md) ease;
+  transition: opacity var(--dur-lg) var(--ease-out), transform var(--dur-md) var(--ease-out), background var(--dur-md) ease;
 }
 
 .threat-flow article:hover {
@@ -1180,7 +1270,7 @@ h3 {
   background: rgba(255, 255, 255, 0.045);
   border: 1px solid var(--ink-line);
   border-radius: var(--radius);
-  transition: transform var(--dur-md) var(--ease-out), border-color var(--dur-md) ease;
+  transition: opacity var(--dur-lg) var(--ease-out), transform var(--dur-md) var(--ease-out), border-color var(--dur-md) ease;
 }
 
 .threat-plans article:hover {
@@ -1509,6 +1599,12 @@ h3 {
   background: var(--paper);
   border: 1px solid var(--paper-line);
   border-radius: var(--radius);
+  transition: opacity var(--dur-lg) var(--ease-out), transform var(--dur-md) var(--ease-out), border-color var(--dur-md) ease;
+}
+
+.pyme-product-grid article:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 95, 31, 0.28);
 }
 
 .pyme-product-grid .card-icon {
@@ -1964,6 +2060,12 @@ h3 {
   background: var(--paper-2);
   border: 1px solid var(--paper-line);
   box-shadow: var(--shadow-md);
+  transition: opacity var(--dur-lg) var(--ease-out), transform var(--dur-md) var(--ease-out), border-color var(--dur-md) ease;
+}
+
+.vciso-deliverables article:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 95, 31, 0.28);
 }
 
 .vciso-deliverables > article > span {
@@ -2270,6 +2372,7 @@ h3 {
   border: 1px solid var(--paper-line);
   box-shadow: var(--shadow-md);
   transition:
+    opacity var(--dur-lg) var(--ease-out),
     transform var(--dur-md) var(--ease-out),
     border-color var(--dur-md) ease,
     box-shadow var(--dur-md) ease;
@@ -2533,6 +2636,23 @@ h3 {
   opacity: 1;
 }
 
+.method-list li,
+.threat-columns article,
+.vciso-plans article,
+.awareness-plans article,
+.awareness-summary article,
+.sgsi-capabilities article,
+.impact-grid article,
+.vciso-map div,
+.awareness-map div,
+.sgsi-console-grid div,
+.course-grid article,
+.finance-list article,
+.whatsapp-bubbles span,
+.audience-row span {
+  transition: opacity var(--dur-lg) var(--ease-out), transform var(--dur-lg) var(--ease-out);
+}
+
 .reveal-ready .service-grid > *,
 .reveal-ready .product-grid > *,
 .reveal-ready .package-grid > *,
@@ -2540,15 +2660,22 @@ h3 {
 .reveal-ready .method-list > li,
 .reveal-ready .threat-flow > article,
 .reveal-ready .threat-plans > article,
+.reveal-ready .threat-columns > article,
 .reveal-ready .vciso-deliverables > article,
 .reveal-ready .vciso-plans > article,
+.reveal-ready .vciso-map > div,
 .reveal-ready .awareness-plans > article,
 .reveal-ready .awareness-summary > article,
+.reveal-ready .awareness-map > div,
 .reveal-ready .pyme-product-grid > article,
-.reveal-ready .sgsi-capabilities > article {
+.reveal-ready .sgsi-capabilities > article,
+.reveal-ready .sgsi-console-grid > div,
+.reveal-ready .course-grid > article,
+.reveal-ready .finance-list > article,
+.reveal-ready .whatsapp-bubbles > span,
+.reveal-ready .audience-row > span {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity var(--dur-lg) var(--ease-out), transform var(--dur-lg) var(--ease-out);
 }
 
 .reveal-ready.is-visible .service-grid > *,
@@ -2558,12 +2685,20 @@ h3 {
 .reveal-ready.is-visible .method-list > li,
 .reveal-ready.is-visible .threat-flow > article,
 .reveal-ready.is-visible .threat-plans > article,
+.reveal-ready.is-visible .threat-columns > article,
 .reveal-ready.is-visible .vciso-deliverables > article,
 .reveal-ready.is-visible .vciso-plans > article,
+.reveal-ready.is-visible .vciso-map > div,
 .reveal-ready.is-visible .awareness-plans > article,
 .reveal-ready.is-visible .awareness-summary > article,
+.reveal-ready.is-visible .awareness-map > div,
 .reveal-ready.is-visible .pyme-product-grid > article,
-.reveal-ready.is-visible .sgsi-capabilities > article {
+.reveal-ready.is-visible .sgsi-capabilities > article,
+.reveal-ready.is-visible .sgsi-console-grid > div,
+.reveal-ready.is-visible .course-grid > article,
+.reveal-ready.is-visible .finance-list > article,
+.reveal-ready.is-visible .whatsapp-bubbles > span,
+.reveal-ready.is-visible .audience-row > span {
   opacity: 1;
   transform: translateY(0);
 }
@@ -2617,6 +2752,9 @@ h3 {
   .main-nav a {
     padding: 14px;
     border-bottom: 1px solid var(--ink-line);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity var(--dur-md) var(--ease-out), transform var(--dur-md) var(--ease-out);
   }
 
   .main-nav a:last-child {
@@ -2626,6 +2764,20 @@ h3 {
   .main-nav a::after {
     display: none;
   }
+
+  .nav-open .main-nav a {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .nav-open .main-nav a:nth-child(1) { transition-delay: 30ms; }
+  .nav-open .main-nav a:nth-child(2) { transition-delay: 55ms; }
+  .nav-open .main-nav a:nth-child(3) { transition-delay: 80ms; }
+  .nav-open .main-nav a:nth-child(4) { transition-delay: 105ms; }
+  .nav-open .main-nav a:nth-child(5) { transition-delay: 130ms; }
+  .nav-open .main-nav a:nth-child(6) { transition-delay: 155ms; }
+  .nav-open .main-nav a:nth-child(7) { transition-delay: 180ms; }
+  .nav-open .main-nav a:nth-child(n + 8) { transition-delay: 205ms; }
 }
 
 @media (max-width: 1050px) {

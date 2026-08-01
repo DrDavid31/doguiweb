@@ -5,6 +5,8 @@ const navToggle = document.querySelector("[data-nav-toggle]");
 const leadForm = document.querySelector("[data-lead-form]");
 const formNote = document.querySelector("[data-form-note]");
 const floatingCta = document.querySelector(".floating-cta");
+const scrollProgress = document.querySelector("[data-scroll-progress]");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const navLinks = nav ? Array.from(nav.querySelectorAll('a[href^="#"]')) : [];
 const navTargets = navLinks
   .map((link) => {
@@ -45,10 +47,19 @@ const setActiveNav = () => {
   }
 };
 
+const updateScrollProgress = () => {
+  if (!scrollProgress) return;
+  const root = document.documentElement;
+  const max = root.scrollHeight - root.clientHeight;
+  const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+  scrollProgress.style.transform = `scaleX(${ratio})`;
+};
+
 const setHeaderState = () => {
   header?.classList.toggle("is-scrolled", window.scrollY > 16);
   floatingCta?.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.55);
   setActiveNav();
+  updateScrollProgress();
 };
 
 let scrollTicking = false;
@@ -66,10 +77,10 @@ const closeNav = () => {
   navToggle?.setAttribute("aria-expanded", "false");
 };
 
-const scrollToTarget = (target) => {
+const scrollToTarget = (target, behavior = "smooth") => {
   const headerHeight = header?.offsetHeight || 0;
   const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerHeight - 12);
-  window.scrollTo({ top, behavior: "auto" });
+  window.scrollTo({ top, behavior: reduceMotion ? "auto" : behavior });
   setHeaderState();
 };
 
@@ -80,7 +91,7 @@ const jumpToInitialHash = () => {
   const root = document.documentElement;
   const previousScrollBehavior = root.style.scrollBehavior;
   root.style.scrollBehavior = "auto";
-  scrollToTarget(target);
+  scrollToTarget(target, "auto");
   root.style.scrollBehavior = previousScrollBehavior;
 };
 
@@ -115,7 +126,6 @@ window.addEventListener("keydown", (event) => {
 });
 
 if ("IntersectionObserver" in window) {
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const revealItems = reduceMotion
     ? []
     : document.querySelectorAll("main > section:not(.hero):not(.trust-strip)");
@@ -136,6 +146,46 @@ if ("IntersectionObserver" in window) {
     );
 
     revealItems.forEach((item) => revealObserver.observe(item));
+  }
+}
+
+const countUp = (el, target, duration = 1200) => {
+  const start = performance.now();
+  const step = (now) => {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = String(Math.round(target * eased));
+    if (progress < 1) window.requestAnimationFrame(step);
+    else el.textContent = String(target);
+  };
+  window.requestAnimationFrame(step);
+};
+
+if ("IntersectionObserver" in window) {
+  const statEls = document.querySelectorAll(".trust-strip strong");
+
+  if (statEls.length) {
+    statEls.forEach((el) => el.classList.add("count-ready"));
+
+    const statObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const el = entry.target;
+          const raw = el.textContent.trim();
+          if (!reduceMotion && /^\d+$/.test(raw)) {
+            countUp(el, Number(raw));
+          }
+
+          el.classList.add("is-counted");
+          statObserver.unobserve(el);
+        });
+      },
+      { threshold: 0.6 },
+    );
+
+    statEls.forEach((el) => statObserver.observe(el));
   }
 }
 
