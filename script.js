@@ -197,13 +197,13 @@ leadForm?.addEventListener("submit", async (event) => {
     if (!response.ok) throw new Error("lead_api_unavailable");
 
     if (formNote) {
-      formNote.textContent = "Listo: recibimos tu solicitud y DOGUI te contactara.";
+      formNote.textContent = "Listo: recibimos tu solicitud y DOGUI te contactará.";
     }
 
     leadForm.reset();
   } catch {
     if (formNote) {
-      formNote.textContent = "No se encontro el backend; abrimos correo como respaldo.";
+      formNote.textContent = "No se encontró el backend; abrimos correo como respaldo.";
     }
 
     openMailFallback(lead);
