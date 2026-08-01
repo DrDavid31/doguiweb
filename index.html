@@ -29,9 +29,8 @@
     <meta name="theme-color" content="#0a1118" />
     <meta name="color-scheme" content="dark light" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" href="assets/dogui-hero-mobile.webp" as="image" type="image/webp" fetchpriority="high" media="(max-width: 760px)" />
-    <link rel="preload" href="assets/dogui-hero.webp" as="image" type="image/webp" fetchpriority="high" media="(min-width: 761px)" />
-    <link rel="stylesheet" href="styles.min.css" />
+    <link rel="preload" href="assets/fonts/space-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -83,12 +82,20 @@
 
     <main id="inicio">
       <section class="hero" aria-labelledby="hero-title">
-        <picture class="hero-media" aria-hidden="true">
-          <source srcset="assets/dogui-hero-mobile.webp" type="image/webp" media="(max-width: 760px)" />
-          <source srcset="assets/dogui-hero.webp" type="image/webp" />
-          <img src="assets/dogui-hero.jpg" width="1672" height="941" alt="" decoding="async" fetchpriority="high" />
-        </picture>
-        <div class="hero-overlay"></div>
+        <div class="hero-field" aria-hidden="true"></div>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <svg class="hero-radar" viewBox="0 0 500 500" aria-hidden="true">
+          <circle cx="250" cy="250" r="80" />
+          <circle cx="250" cy="250" r="150" />
+          <circle cx="250" cy="250" r="220" />
+          <g class="radar-sweep">
+            <path d="M250 250 L250 30 A220 220 0 0 1 405 105 Z" fill="currentColor" opacity="0.14" />
+          </g>
+          <circle class="radar-blip" cx="330" cy="160" r="4" style="animation-delay: 0s" />
+          <circle class="radar-blip" cx="150" cy="310" r="4" style="animation-delay: 0.8s" />
+          <circle class="radar-blip" cx="360" cy="320" r="4" style="animation-delay: 1.6s" />
+          <circle class="radar-blip" cx="200" cy="140" r="4" style="animation-delay: 2.3s" />
+        </svg>
         <div class="hero-content">
           <div class="hero-copy-block">
             <p class="eyebrow">Ciberseguridad ofensiva, defensiva y financiera</p>
@@ -107,20 +114,6 @@
                 Ver paquetes
               </a>
             </div>
-            <div class="hero-proof" aria-label="Capacidades principales">
-              <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-radar"></use></svg>CTI</span>
-              <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-eye"></use></svg>Dark Web</span>
-              <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-database-zap"></use></svg>Filtraciones</span>
-              <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-message-warning"></use></svg>WhatsApp Security</span>
-              <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-shield-check"></use></svg>SOC/MDR</span>
-              <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-bug"></use></svg>Pentest</span>
-              <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-workflow"></use></svg>SOAR</span>
-              <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-user-check"></use></svg>vCISO</span>
-            </div>
-            <p class="hero-signal">
-              Detectamos exposicion de credenciales, menciones de marca y senales de fraude en fuentes abiertas,
-              Telegram, deep web y dark web.
-            </p>
           </div>
 
           <aside class="hero-panel" aria-label="Vista ejecutiva de DOGUI">
@@ -168,6 +161,25 @@
         </div>
       </section>
 
+      <section class="capability-strip" aria-label="Capacidades principales DOGUI">
+        <div class="capability-strip-inner">
+          <p class="capability-strip-lede">
+            Detectamos exposicion de credenciales, menciones de marca y senales de fraude en fuentes
+            abiertas, Telegram, deep web y dark web.
+          </p>
+          <div class="capability-list">
+            <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-radar"></use></svg>CTI</span>
+            <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-eye"></use></svg>Dark Web</span>
+            <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-database-zap"></use></svg>Filtraciones</span>
+            <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-message-warning"></use></svg>WhatsApp Security</span>
+            <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-shield-check"></use></svg>SOC/MDR</span>
+            <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-bug"></use></svg>Pentest</span>
+            <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-workflow"></use></svg>SOAR</span>
+            <span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-user-check"></use></svg>vCISO</span>
+          </div>
+        </div>
+      </section>
+
       <section class="trust-strip" aria-label="Resultados de DOGUI">
         <div>
           <svg class="icon trust-icon" aria-hidden="true"><use href="assets/icons.svg#icon-shield-check"></use></svg>
@@ -193,7 +205,6 @@
 
       <section class="section intro">
         <div class="section-heading">
-          <p class="eyebrow">Para directores de TI, seguridad y cumplimiento</p>
           <h2>Deja de perseguir alertas sueltas. Construye una defensa que venda confianza.</h2>
         </div>
         <p>
@@ -312,7 +323,6 @@
 
       <section class="section" id="productos" aria-labelledby="productos-title">
         <div class="section-heading">
-          <p class="eyebrow">Productos y plataformas</p>
           <h2 id="productos-title">Tecnologia para visibilidad, control y velocidad.</h2>
         </div>
 
@@ -500,7 +510,6 @@
 
       <section class="section impact-section" id="impacto" aria-labelledby="impacto-title">
         <div class="section-heading">
-          <p class="eyebrow">Impacto para presentar</p>
           <h2 id="impacto-title">Una propuesta clara para direccion, tecnologia y cumplimiento.</h2>
         </div>
 
@@ -539,7 +548,6 @@
 
       <section class="sgsi-section" id="sgsi" aria-labelledby="sgsi-title">
         <div class="sgsi-copy">
-          <p class="eyebrow">SGSI | Software de desarrollo propio</p>
           <h2 id="sgsi-title">CIDSI convierte la seguridad de la informacion en un sistema gestionable.</h2>
           <p>
             DOGUI integra su propio software CIDSI para ayudar a organizaciones a operar un Sistema de Gestion
@@ -638,84 +646,107 @@
           </ul>
         </div>
 
-        <div class="pyme-product-grid" aria-label="Productos DOGUI para PyMEs">
-          <article>
-            <span>01</span>
-            <h3>WhatsApp Security Assistant</h3>
-            <p>Canal oficial para reportar links, correos, archivos, fraude, alertas internas y tickets.</p>
-            <strong>Tus empleados ya usan WhatsApp. DOGUI lo convierte en tu primera linea de defensa.</strong>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Link & File Checker</h3>
-            <p>Analiza links, PDFs, Excel, Word, ZIPs o imagenes antes de abrirlos, por WhatsApp o panel web.</p>
-            <strong>Antes de abrir un archivo raro, mandalo a DOGUI.</strong>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Phishing Simulator</h3>
-            <p>Campanas por correo, WhatsApp o SMS con metricas de clics, reportes, score y capacitacion.</p>
-            <strong>Medimos y reducimos el riesgo humano antes de que un fraude real ocurra.</strong>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>Credential Exposure Monitor</h3>
-            <p>Detecta cuentas corporativas filtradas y prioriza usuarios criticos de direccion, finanzas, RH y TI.</p>
-            <strong>Te avisamos cuando las cuentas de tu empresa aparecen expuestas.</strong>
-          </article>
-          <article>
-            <span>05</span>
-            <h3>Brand Protection</h3>
-            <p>Monitorea dominios parecidos, perfiles falsos, paginas clonadas, ofertas falsas y menciones sospechosas.</p>
-            <strong>Detectamos cuando alguien intenta usar tu nombre para enganar a tus clientes.</strong>
-          </article>
-          <article>
-            <span>06</span>
-            <h3>Exposure Scan</h3>
-            <p>Revisa subdominios, puertos, logins expuestos, certificados, headers y servicios vulnerables.</p>
-            <strong>Te mostramos que ve un atacante cuando busca tu empresa en internet.</strong>
-          </article>
-          <article>
-            <span>07</span>
-            <h3>Executive Cyber Report</h3>
-            <p>Reporte mensual con riesgo general, hallazgos, empleados de mayor riesgo, incidentes y recomendaciones.</p>
-            <strong>Ciberseguridad traducida a reportes claros para direccion.</strong>
-          </article>
-          <article>
-            <span>08</span>
-            <h3>Vendor Risk Lite</h3>
-            <p>Evalua proveedores con checklist, dominio, correos filtrados, exposicion, HTTPS, DNS, SPF, DKIM y DMARC.</p>
-            <strong>Antes de confiar datos o accesos, DOGUI revisa su riesgo basico.</strong>
-          </article>
-          <article>
-            <span>09</span>
-            <h3>Email Security Check</h3>
-            <p>Revisa SPF, DKIM, DMARC, MX, spoofing posible, seguridad del dominio y verificacion mensual.</p>
-            <strong>Evita que manden correos falsos usando el nombre de tu empresa.</strong>
-          </article>
-          <article>
-            <span>10</span>
-            <h3>Ransomware Readiness</h3>
-            <p>Evalua backups, MFA, usuarios administradores, servicios expuestos, parches, segmentacion y respuesta.</p>
-            <strong>Revisamos si puedes recuperarte sin detener la operacion.</strong>
-          </article>
-          <article>
-            <span>11</span>
-            <h3>Compliance Lite</h3>
-            <p>Ordena ISO 27001 basico, matriz de riesgos, politicas, activos, responsables, evidencias y avance.</p>
-            <strong>Prepara tu empresa para auditorias, clientes corporativos y mejores practicas.</strong>
-          </article>
-          <article>
-            <span>12</span>
-            <h3>AI Fraud Defense</h3>
-            <p>Detecta mensajes sospechosos, solicitudes urgentes de pago, deepfake scams y fraude multicanal.</p>
-            <strong>Protege finanzas y direccion contra fraudes generados con IA.</strong>
-          </article>
+        <div class="pyme-cluster">
+          <div class="pyme-cluster-title">
+            <h3>Deteccion y respuesta</h3>
+            <span>4 productos</span>
+          </div>
+          <div class="pyme-product-grid" aria-label="Productos DOGUI de deteccion y respuesta">
+            <article>
+              <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-message-warning"></use></svg></div>
+              <h3>WhatsApp Security Assistant</h3>
+              <p>Canal oficial para reportar links, correos, archivos, fraude, alertas internas y tickets.</p>
+              <strong>Tus empleados ya usan WhatsApp. DOGUI lo convierte en tu primera linea de defensa.</strong>
+            </article>
+            <article>
+              <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-link"></use></svg></div>
+              <h3>Link & File Checker</h3>
+              <p>Analiza links, PDFs, Excel, Word, ZIPs o imagenes antes de abrirlos, por WhatsApp o panel web.</p>
+              <strong>Antes de abrir un archivo raro, mandalo a DOGUI.</strong>
+            </article>
+            <article>
+              <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-bug"></use></svg></div>
+              <h3>Phishing Simulator</h3>
+              <p>Campanas por correo, WhatsApp o SMS con metricas de clics, reportes, score y capacitacion.</p>
+              <strong>Medimos y reducimos el riesgo humano antes de que un fraude real ocurra.</strong>
+            </article>
+            <article>
+              <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-fingerprint"></use></svg></div>
+              <h3>Credential Exposure Monitor</h3>
+              <p>Detecta cuentas corporativas filtradas y prioriza usuarios criticos de direccion, finanzas, RH y TI.</p>
+              <strong>Te avisamos cuando las cuentas de tu empresa aparecen expuestas.</strong>
+            </article>
+          </div>
+        </div>
+
+        <div class="pyme-cluster">
+          <div class="pyme-cluster-title">
+            <h3>Proteccion de marca y superficie</h3>
+            <span>4 productos</span>
+          </div>
+          <div class="pyme-product-grid" aria-label="Productos DOGUI de proteccion de marca y superficie">
+            <article>
+              <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-shield-check"></use></svg></div>
+              <h3>Brand Protection</h3>
+              <p>Monitorea dominios parecidos, perfiles falsos, paginas clonadas, ofertas falsas y menciones sospechosas.</p>
+              <strong>Detectamos cuando alguien intenta usar tu nombre para enganar a tus clientes.</strong>
+            </article>
+            <article>
+              <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-scan"></use></svg></div>
+              <h3>Exposure Scan</h3>
+              <p>Revisa subdominios, puertos, logins expuestos, certificados, headers y servicios vulnerables.</p>
+              <strong>Te mostramos que ve un atacante cuando busca tu empresa en internet.</strong>
+            </article>
+            <article>
+              <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-chart"></use></svg></div>
+              <h3>Executive Cyber Report</h3>
+              <p>Reporte mensual con riesgo general, hallazgos, empleados de mayor riesgo, incidentes y recomendaciones.</p>
+              <strong>Ciberseguridad traducida a reportes claros para direccion.</strong>
+            </article>
+            <article>
+              <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-building"></use></svg></div>
+              <h3>Vendor Risk Lite</h3>
+              <p>Evalua proveedores con checklist, dominio, correos filtrados, exposicion, HTTPS, DNS, SPF, DKIM y DMARC.</p>
+              <strong>Antes de confiar datos o accesos, DOGUI revisa su riesgo basico.</strong>
+            </article>
+          </div>
+        </div>
+
+        <div class="pyme-cluster">
+          <div class="pyme-cluster-title">
+            <h3>Cumplimiento y continuidad</h3>
+            <span>4 productos</span>
+          </div>
+          <div class="pyme-product-grid" aria-label="Productos DOGUI de cumplimiento y continuidad">
+            <article>
+              <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-mail-warning"></use></svg></div>
+              <h3>Email Security Check</h3>
+              <p>Revisa SPF, DKIM, DMARC, MX, spoofing posible, seguridad del dominio y verificacion mensual.</p>
+              <strong>Evita que manden correos falsos usando el nombre de tu empresa.</strong>
+            </article>
+            <article>
+              <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-siren"></use></svg></div>
+              <h3>Ransomware Readiness</h3>
+              <p>Evalua backups, MFA, usuarios administradores, servicios expuestos, parches, segmentacion y respuesta.</p>
+              <strong>Revisamos si puedes recuperarte sin detener la operacion.</strong>
+            </article>
+            <article>
+              <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-file-lock"></use></svg></div>
+              <h3>Compliance Lite</h3>
+              <p>Ordena ISO 27001 basico, matriz de riesgos, politicas, activos, responsables, evidencias y avance.</p>
+              <strong>Prepara tu empresa para auditorias, clientes corporativos y mejores practicas.</strong>
+            </article>
+            <article>
+              <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-bot"></use></svg></div>
+              <h3>AI Fraud Defense</h3>
+              <p>Detecta mensajes sospechosos, solicitudes urgentes de pago, deepfake scams y fraude multicanal.</p>
+              <strong>Protege finanzas y direccion contra fraudes generados con IA.</strong>
+            </article>
+          </div>
         </div>
 
         <div class="pyme-focus">
           <div>
-            <p class="eyebrow">Los primeros 5 para salir a vender</p>
             <h3>Un paquete fuerte para PyMEs empieza con WhatsApp, archivos, phishing, credenciales y exposicion.</h3>
           </div>
           <ol>
@@ -783,7 +814,6 @@
 
       <section class="awareness-section" id="awareness" aria-labelledby="awareness-title">
         <div class="section-heading awareness-heading">
-          <p class="eyebrow">DOGUI Awareness</p>
           <h2 id="awareness-title">Programa de concientizacion en ciberseguridad para empresas.</h2>
           <p>
             El factor humano sigue siendo uno de los principales puntos de entrada para incidentes de seguridad.
@@ -876,7 +906,6 @@
 
         <div class="awareness-whatsapp">
           <div>
-            <p class="eyebrow">Integracion con WhatsApp</p>
             <h3>Awareness conectado al canal que tus empleados ya usan.</h3>
             <p>
               DOGUI Awareness se integra con WhatsApp para reforzar la capacitacion, enviar recordatorios,
@@ -895,7 +924,6 @@
 
         <div class="course-catalog" aria-label="Catalogo de cursos DOGUI Awareness">
           <div class="section-heading">
-            <p class="eyebrow">Catalogo de cursos</p>
             <h3>Cursos practicos para reducir riesgo humano por rol y por amenaza.</h3>
           </div>
           <div class="course-grid">
@@ -1005,7 +1033,6 @@
 
         <div class="vciso-problem">
           <div>
-            <p class="eyebrow">Que problema resuelve</p>
             <h3>Muchas empresas tienen herramientas, pero no una estrategia clara de seguridad.</h3>
           </div>
           <ul>
@@ -1124,7 +1151,6 @@
 
         <div class="vciso-ecosystem">
           <div>
-            <p class="eyebrow">Como conecta con DOGUI</p>
             <h3>El vCISO ordena y activa el ecosistema de servicios DOGUI.</h3>
             <p>DOGUI protege a tu empresa desde tres frentes: empleados, exposicion digital y direccion estrategica de ciberseguridad.</p>
           </div>
@@ -1144,7 +1170,6 @@
 
       <section class="finance-band" id="spei-spid" aria-labelledby="spei-spid-title">
         <div class="finance-copy">
-          <p class="eyebrow">Consultoria financiera especializada</p>
           <h2 id="spei-spid-title">SPEI/SPID con controles, trazabilidad y respuesta operativa.</h2>
           <p>
             Apoyamos a instituciones y proveedores que participan en flujos de pagos a fortalecer seguridad,
@@ -1170,7 +1195,6 @@
       <section class="section" aria-labelledby="automation-title">
         <div class="split">
           <div>
-            <p class="eyebrow">Automatizaciones</p>
             <h2 id="automation-title">Menos trabajo repetitivo. Mas respuesta medible.</h2>
             <p>
               DOGUI crea automatizaciones para enriquecer alertas, bloquear indicadores, generar tickets, notificar
@@ -1196,7 +1220,6 @@
 
       <section class="section dark-section method-section" id="metodo" aria-labelledby="metodo-title">
         <div class="section-heading">
-          <p class="eyebrow">Metodo DOGUI</p>
           <h2 id="metodo-title">Un camino claro desde diagnostico hasta operacion continua.</h2>
         </div>
 
@@ -1226,7 +1249,6 @@
 
       <section class="section packages" id="paquetes" aria-labelledby="packages-title">
         <div class="section-heading">
-          <p class="eyebrow">Paquetes comerciales</p>
           <h2 id="packages-title">Elige el punto de entrada y crecemos desde ahi.</h2>
         </div>
 
