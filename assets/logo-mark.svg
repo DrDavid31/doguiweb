@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="dogui-mark-title">
+  <title id="dogui-mark-title">DOGUI</title>
   <rect width="64" height="64" rx="16" fill="#0b0d10"/>
   <path d="M32 12 A20 20 0 0 1 52 32" fill="none" stroke="#ffb703" stroke-width="2.2" stroke-linecap="round" opacity="0.6"/>
   <circle cx="52" cy="32" r="2.4" fill="#ffb703"/>
