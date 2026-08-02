@@ -6,6 +6,8 @@ const leadForm = document.querySelector("[data-lead-form]");
 const formNote = document.querySelector("[data-form-note]");
 const floatingCta = document.querySelector(".floating-cta");
 const scrollProgress = document.querySelector("[data-scroll-progress]");
+const navIndicator = document.querySelector("[data-nav-indicator]");
+const heroRadar = document.querySelector(".hero-radar");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const navLinks = nav ? Array.from(nav.querySelectorAll('a[href^="#"]')) : [];
 const navTargets = navLinks
@@ -45,6 +47,18 @@ const setActiveNav = () => {
     activeItem.link.classList.add("is-active");
     activeItem.link.setAttribute("aria-current", "page");
   }
+
+  if (navIndicator && nav) {
+    if (activeItem) {
+      const navRect = nav.getBoundingClientRect();
+      const linkRect = activeItem.link.getBoundingClientRect();
+      navIndicator.style.opacity = "1";
+      navIndicator.style.width = `${linkRect.width}px`;
+      navIndicator.style.transform = `translateX(${linkRect.left - navRect.left}px)`;
+    } else {
+      navIndicator.style.opacity = "0";
+    }
+  }
 };
 
 const updateScrollProgress = () => {
@@ -55,11 +69,18 @@ const updateScrollProgress = () => {
   scrollProgress.style.transform = `scaleX(${ratio})`;
 };
 
+const updateRadarParallax = () => {
+  if (!heroRadar || reduceMotion) return;
+  const offset = Math.min(60, window.scrollY * 0.08);
+  heroRadar.style.transform = `translateY(calc(-50% + ${offset}px))`;
+};
+
 const setHeaderState = () => {
   header?.classList.toggle("is-scrolled", window.scrollY > 16);
   floatingCta?.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.55);
   setActiveNav();
   updateScrollProgress();
+  updateRadarParallax();
 };
 
 let scrollTicking = false;
@@ -187,6 +208,63 @@ if ("IntersectionObserver" in window) {
 
     statEls.forEach((el) => statObserver.observe(el));
   }
+}
+
+if (!reduceMotion) {
+  const magneticEls = document.querySelectorAll(".button");
+  magneticEls.forEach((el) => {
+    el.addEventListener("mousemove", (event) => {
+      const rect = el.getBoundingClientRect();
+      const relX = event.clientX - rect.left - rect.width / 2;
+      const relY = event.clientY - rect.top - rect.height / 2;
+      const pullX = (relX / rect.width) * 14;
+      const pullY = (relY / rect.height) * 14;
+      el.style.transform = `translate(${pullX}px, ${pullY - 2}px)`;
+    });
+
+    el.addEventListener("mouseleave", () => {
+      el.style.transform = "";
+    });
+  });
+
+  const spotlightSelector =
+    ".service-card, .product-card, .package-card, .pyme-product-grid article, .vciso-deliverables article";
+
+  document.addEventListener(
+    "mousemove",
+    (event) => {
+      const card = event.target instanceof Element ? event.target.closest(spotlightSelector) : null;
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--spot-x", `${((event.clientX - rect.left) / rect.width) * 100}%`);
+      card.style.setProperty("--spot-y", `${((event.clientY - rect.top) / rect.height) * 100}%`);
+    },
+    { passive: true },
+  );
+}
+
+const scrambleChars = "!<>-_\\/[]{}=+*^#01";
+const scrambleText = (el, finalText, duration = 600) => {
+  const start = performance.now();
+  const step = (now) => {
+    const progress = Math.min((now - start) / duration, 1);
+    const revealCount = Math.floor(progress * finalText.length);
+    let out = "";
+    for (let i = 0; i < finalText.length; i += 1) {
+      const ch = finalText[i];
+      out += i < revealCount || ch === " " ? ch : scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+    }
+    el.textContent = out;
+    if (progress < 1) window.requestAnimationFrame(step);
+    else el.textContent = finalText;
+  };
+  window.requestAnimationFrame(step);
+};
+
+const heroTitle = document.getElementById("hero-title");
+if (heroTitle && !reduceMotion) {
+  const finalHeroText = heroTitle.textContent.trim();
+  window.setTimeout(() => scrambleText(heroTitle, finalHeroText, 600), 180);
 }
 
 const getLeadPayload = (formData) => ({

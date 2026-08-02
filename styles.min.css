@@ -346,6 +346,7 @@ h3 {
 }
 
 .main-nav {
+  position: relative;
   display: flex;
   align-items: center;
   gap: clamp(10px, 1.3vw, 20px);
@@ -355,7 +356,23 @@ h3 {
   white-space: nowrap;
 }
 
+.nav-indicator {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  z-index: 0;
+  height: calc(100% - 8px);
+  width: 0;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transform: translateX(0);
+  transition: transform 380ms var(--ease-out), width 380ms var(--ease-out), opacity 220ms ease;
+  pointer-events: none;
+}
+
 .main-nav a {
+  z-index: 1;
   position: relative;
   padding: 8px 0;
   transition: color var(--dur-md) ease;
@@ -471,6 +488,30 @@ h3 {
   fill: none;
   stroke: currentColor;
   stroke-opacity: 0.22;
+}
+
+.hero-radar circle:nth-child(1) {
+  stroke-dasharray: 503;
+  stroke-dashoffset: 503;
+  animation: radar-draw 1.3s var(--ease-out) 0.5s forwards;
+}
+
+.hero-radar circle:nth-child(2) {
+  stroke-dasharray: 943;
+  stroke-dashoffset: 943;
+  animation: radar-draw 1.3s var(--ease-out) 0.68s forwards;
+}
+
+.hero-radar circle:nth-child(3) {
+  stroke-dasharray: 1382;
+  stroke-dashoffset: 1382;
+  animation: radar-draw 1.3s var(--ease-out) 0.86s forwards;
+}
+
+@keyframes radar-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 .hero-radar .radar-blip {
@@ -746,10 +787,40 @@ h3 {
 }
 
 .capability-list {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.capability-list:hover .capability-track {
+  animation-play-state: paused;
+}
+
+.capability-track {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: capability-marquee 26s linear infinite;
+}
+
+@keyframes capability-marquee {
+  to {
+    transform: translateX(calc(-100% - 10px));
+  }
+}
+
+.capability-track li {
+  flex: 0 0 auto;
 }
 
 .capability-list span {
@@ -764,6 +835,7 @@ h3 {
   border-radius: var(--radius-full);
   font-size: 0.78rem;
   font-weight: 600;
+  white-space: nowrap;
   transition: transform var(--dur-sm) var(--ease-out), border-color var(--dur-sm) ease, color var(--dur-sm) ease;
 }
 
@@ -901,6 +973,39 @@ h3 {
 .pyme-product-grid article:hover .card-icon,
 .vciso-deliverables article:hover .card-icon {
   transform: scale(1.08) rotate(-4deg);
+}
+
+.service-card > *,
+.product-card > *,
+.package-card > *,
+.pyme-product-grid article > *,
+.vciso-deliverables article > * {
+  position: relative;
+  z-index: 1;
+}
+
+.service-card::before,
+.product-card::before,
+.package-card::before,
+.pyme-product-grid article::before,
+.vciso-deliverables article::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle 240px at var(--spot-x, 50%) var(--spot-y, 50%), rgba(255, 95, 31, 0.16), transparent 72%);
+  opacity: 0;
+  transition: opacity var(--dur-md) ease;
+  pointer-events: none;
+}
+
+.service-card:hover::before,
+.product-card:hover::before,
+.package-card:hover::before,
+.pyme-product-grid article:hover::before,
+.vciso-deliverables article:hover::before {
+  opacity: 1;
 }
 
 .card-icon .icon {
@@ -1591,6 +1696,8 @@ h3 {
 }
 
 .pyme-product-grid article {
+  position: relative;
+  overflow: hidden;
   min-height: 236px;
   display: grid;
   align-content: start;
@@ -2052,6 +2159,8 @@ h3 {
 }
 
 .vciso-deliverables article {
+  position: relative;
+  overflow: hidden;
   min-height: 280px;
   display: grid;
   gap: 10px;
@@ -2717,6 +2826,10 @@ h3 {
     padding-inline: 16px;
   }
 
+  .nav-indicator {
+    display: none;
+  }
+
   .nav-toggle {
     display: grid;
     place-items: center;
@@ -3023,7 +3136,8 @@ h3 {
   }
 
   .hero-radar .radar-sweep,
-  .hero-radar .radar-blip {
+  .hero-radar .radar-blip,
+  .capability-track {
     animation: none;
   }
 }
