@@ -1,5 +1,5 @@
 const { z } = require("zod");
-const { applyCors, handleOptions, methodNotAllowed, readJson, sendJson } = require("./_lib/http");
+const { enforceCors, handleOptions, methodNotAllowed, readJson, sendJson } = require("./_lib/http");
 const { rateLimit } = require("./_lib/rate-limit");
 const { captureEvent, captureException } = require("./_lib/observability");
 
@@ -10,8 +10,8 @@ const EventSchema = z.object({
 });
 
 module.exports = async function handler(req, res) {
-  applyCors(req, res);
   if (req.method === "OPTIONS") return handleOptions(req, res);
+  if (!enforceCors(req, res)) return;
   if (req.method !== "POST") return methodNotAllowed(res, ["POST"]);
 
   const limit = rateLimit(req, { key: "events", max: 120, windowMs: 60_000 });

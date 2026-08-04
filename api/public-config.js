@@ -1,8 +1,8 @@
-const { applyCors, handleOptions, methodNotAllowed, sendJson } = require("./_lib/http");
+const { enforceCors, handleOptions, methodNotAllowed, sendJson } = require("./_lib/http");
 
 module.exports = async function handler(req, res) {
-  applyCors(req, res);
   if (req.method === "OPTIONS") return handleOptions(req, res);
+  if (!enforceCors(req, res)) return;
   if (req.method !== "GET") return methodNotAllowed(res, ["GET"]);
 
   return sendJson(res, 200, {

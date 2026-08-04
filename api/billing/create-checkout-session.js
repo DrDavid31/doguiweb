@@ -1,5 +1,5 @@
 const { z } = require("zod");
-const { applyCors, handleOptions, methodNotAllowed, readJson, sendJson } = require("../_lib/http");
+const { enforceCors, handleOptions, methodNotAllowed, readJson, sendJson } = require("../_lib/http");
 const { requireClerkAuth } = require("../_lib/auth");
 const { getPriceId, getStripe } = require("../_lib/billing");
 const { captureEvent, captureException } = require("../_lib/observability");
@@ -9,8 +9,8 @@ const CheckoutSchema = z.object({
 });
 
 module.exports = async function handler(req, res) {
-  applyCors(req, res);
   if (req.method === "OPTIONS") return handleOptions(req, res);
+  if (!enforceCors(req, res)) return;
   if (req.method !== "POST") return methodNotAllowed(res, ["POST"]);
 
   try {

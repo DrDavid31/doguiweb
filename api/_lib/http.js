@@ -7,16 +7,23 @@ function setSecurityHeaders(res) {
 }
 
 function getAllowedOrigins() {
-  return String(process.env.ALLOWED_ORIGINS || "")
+  const configured = String(process.env.ALLOWED_ORIGINS || "")
     .split(",")
     .map((item) => item.trim())
     .filter(Boolean);
+
+  if (configured.length) return configured;
+
+  // Fail closed: an unset ALLOWED_ORIGINS must not mean "allow every origin".
+  // Fall back to the app's own origin only, if it's configured.
+  const appUrl = String(process.env.APP_URL || "").trim();
+  return appUrl ? [appUrl] : [];
 }
 
 function applyCors(req, res) {
   const origin = req.headers.origin;
   const allowedOrigins = getAllowedOrigins();
-  const isAllowed = !origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin);
+  const isAllowed = !origin || allowedOrigins.includes(origin);
 
   res.setHeader("Vary", "Origin");
   res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
@@ -26,6 +33,18 @@ function applyCors(req, res) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
 
+  return isAllowed;
+}
+
+// Applies CORS headers and rejects the request outright when it carries a
+// cross-origin Origin header that isn't allow-listed, so a disallowed origin
+// can't trigger the handler's side effects even though CORS itself only
+// governs response readability, not request execution.
+function enforceCors(req, res) {
+  const isAllowed = applyCors(req, res);
+  if (!isAllowed) {
+    sendJson(res, 403, { ok: false, error: "origin_not_allowed" });
+  }
   return isAllowed;
 }
 
@@ -90,6 +109,7 @@ async function readJson(req, limitBytes = DEFAULT_LIMIT_BYTES) {
 
 module.exports = {
   applyCors,
+  enforceCors,
   getClientIp,
   handleOptions,
   methodNotAllowed,
