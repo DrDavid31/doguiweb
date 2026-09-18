@@ -371,7 +371,7 @@ h3 {
   border-radius: var(--radius-full);
   opacity: 0;
   transform: translateX(0);
-  transition: transform 380ms var(--ease-out), width 380ms var(--ease-out), opacity 220ms ease;
+  transition: transform 380ms var(--ease-out), opacity 220ms ease;
   pointer-events: none;
 }
 
@@ -1280,14 +1280,6 @@ h3 {
   overflow: hidden;
 }
 
-.threat-hero aside::before {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  content: "";
-  background: var(--accent);
-}
-
 .threat-hero aside span,
 .threat-plans span,
 .threat-flow span {
@@ -2121,7 +2113,6 @@ h3 {
   padding: 16px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--ink-line);
-  border-left: 2px solid var(--accent);
   border-radius: var(--radius-sm);
 }
 
@@ -2404,7 +2395,6 @@ h3 {
   padding: 15px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--ink-line);
-  border-left: 2px solid var(--accent);
   border-radius: var(--radius-sm);
 }
 
@@ -2448,7 +2438,6 @@ h3 {
   padding: 24px;
   background: rgba(255, 255, 255, 0.045);
   border: 1px solid var(--ink-line);
-  border-left: 3px solid var(--accent);
   border-radius: var(--radius);
 }
 
