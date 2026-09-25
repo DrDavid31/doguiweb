@@ -18,17 +18,23 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://drdavid31.github.io/doguiweb/" />
     <meta property="og:site_name" content="DOGUI" />
-    <meta property="og:image" content="https://drdavid31.github.io/doguiweb/assets/dogui-hero-og.jpg" />
+    <meta property="og:image" content="https://drdavid31.github.io/doguiweb/assets/og-dogui.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DOGUI · Ciberseguridad ofensiva, defensiva y financiera" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="DOGUI | Ciberseguridad y consultoría SPEI/SPID" />
     <meta
       name="twitter:description"
       content="SOC/MDR, Threat Exposure Monitoring, vCISO, Awareness, SGSI CIDSI y consultoría SPEI/SPID para empresas."
     />
-    <meta name="twitter:image" content="https://drdavid31.github.io/doguiweb/assets/dogui-hero-og.jpg" />
-    <meta name="theme-color" content="#0a1118" />
+    <meta name="twitter:image" content="https://drdavid31.github.io/doguiweb/assets/og-dogui.png" />
+    <meta name="theme-color" content="#0a0a0a" />
     <meta name="color-scheme" content="dark light" />
+    <link rel="icon" href="assets/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="manifest" href="assets/site.webmanifest" />
     <link rel="preload" href="assets/fonts/space-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="styles.min.css" />
     <script type="application/ld+json">
@@ -37,6 +43,8 @@
         "@type": "ProfessionalService",
         "name": "DOGUI",
         "url": "https://drdavid31.github.io/doguiweb/",
+        "logo": "https://drdavid31.github.io/doguiweb/assets/icon-512.png",
+        "image": "https://drdavid31.github.io/doguiweb/assets/og-dogui.png",
         "description": "Servicios de ciberseguridad, Threat Exposure Monitoring, vCISO, SGSI con CIDSI, awareness, automatización y consultoría SPEI/SPID.",
         "areaServed": "MX",
         "email": "ventas@dogui.mx",
@@ -57,12 +65,7 @@
     <a class="skip-link" href="#contacto">Saltar a contacto</a>
     <header class="site-header" data-header>
       <a class="brand" href="#inicio" aria-label="DOGUI inicio">
-        <span class="brand-mark">
-          <svg class="brand-mark-svg" viewBox="0 0 64 64" aria-hidden="true">
-            <path d="M23 47 L23 17 C35 17 43 23 43 32 C43 41 35 47 23 47 Z" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="brand-text">DOGUI</span>
+        <img class="brand-logo" src="assets/logo-lockup-dark.svg" alt="" width="308" height="100" />
       </a>
 
       <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-navigation" data-nav-toggle>
@@ -125,7 +128,10 @@
 
           <aside class="hero-panel" aria-label="Vista ejecutiva de DOGUI">
             <div class="panel-topline">
-              <span class="panel-status">Operación lista para presentar</span>
+              <span class="panel-brand">
+                <img class="panel-mark" src="assets/logo-mark-small-dark.svg" alt="" width="23" height="29" />
+                <span class="panel-status">Operación lista para presentar</span>
+              </span>
               <span class="panel-pill">MX</span>
             </div>
             <h2>Defensa integral para entornos críticos</h2>
@@ -242,7 +248,7 @@
           <article class="service-card featured-card">
             <div class="soc-feed" aria-hidden="true">
               <div class="soc-feed-head">
-                <span>Consola SOC</span>
+                <span class="console-brand"><img class="console-mark" src="assets/logo-mark-small-dark.svg" alt="" width="14" height="18" loading="lazy" />Consola SOC</span>
                 <span class="soc-live">En vivo</span>
               </div>
               <ol>
@@ -594,7 +600,7 @@
         <div class="sgsi-console" aria-label="Módulos CIDSI">
           <div class="sgsi-console-header">
             <span>CIDSI</span>
-            <strong>SGSI operativo</strong>
+            <strong class="console-brand"><img class="console-mark" src="assets/logo-mark-small-dark.svg" alt="" width="14" height="18" loading="lazy" />SGSI operativo</strong>
           </div>
           <div class="sgsi-console-grid">
             <div>
@@ -943,12 +949,18 @@
               Esto lo hace diferente a un curso común.
             </p>
           </div>
-          <div class="whatsapp-bubbles" aria-label="Ejemplos de mensajes DOGUI Awareness">
-            <span>Curso nuevo disponible: cómo detectar phishing.</span>
-            <span>Responde esta pregunta de seguridad.</span>
-            <span>¿Este link parece seguro o sospechoso?</span>
-            <span>Reporta aquí cualquier mensaje extraño.</span>
-            <span>Tu simulación de phishing fue completada.</span>
+          <div class="whatsapp-chat">
+            <div class="whatsapp-contact" aria-hidden="true">
+              <span class="whatsapp-avatar"><img src="assets/logo-mark-small-dark.svg" alt="" width="17" height="21" loading="lazy" /></span>
+              <span><strong>DOGUI Awareness</strong><small>Cuenta de empresa</small></span>
+            </div>
+            <div class="whatsapp-bubbles" aria-label="Ejemplos de mensajes DOGUI Awareness">
+              <span>Curso nuevo disponible: cómo detectar phishing.</span>
+              <span>Responde esta pregunta de seguridad.</span>
+              <span>¿Este link parece seguro o sospechoso?</span>
+              <span>Reporta aquí cualquier mensaje extraño.</span>
+              <span>Tu simulación de phishing fue completada.</span>
+            </div>
           </div>
         </div>
 
@@ -1526,12 +1538,7 @@
 
     <footer class="site-footer">
       <a class="brand" href="#inicio" aria-label="DOGUI inicio">
-        <span class="brand-mark">
-          <svg class="brand-mark-svg" viewBox="0 0 64 64" aria-hidden="true">
-            <path d="M23 47 L23 17 C35 17 43 23 43 32 C43 41 35 47 23 47 Z" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="brand-text">DOGUI</span>
+        <img class="brand-logo" src="assets/logo-lockup-dark.svg" alt="" width="308" height="100" loading="lazy" />
       </a>
       <p>Servicios de ciberseguridad, automatización y consultoría financiera especializada.</p>
       <a href="#contacto">Agenda tu diagnóstico</a>

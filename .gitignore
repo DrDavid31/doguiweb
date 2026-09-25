@@ -7,3 +7,6 @@ node_modules/
 !.env.example
 .DS_Store
 Thumbs.db
+
+# Kit de marca y opciones de logo: se trabajan localmente (copia en el escritorio), no se publican.
+brand/
