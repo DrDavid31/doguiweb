@@ -30,7 +30,7 @@
     <meta name="color-scheme" content="dark light" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="assets/fonts/space-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.min.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -240,6 +240,17 @@
 
         <div class="service-grid">
           <article class="service-card featured-card">
+            <div class="soc-feed" aria-hidden="true">
+              <div class="soc-feed-head">
+                <span>Consola SOC</span>
+                <span class="soc-live">En vivo</span>
+              </div>
+              <ol>
+                <li><span class="soc-sev soc-sev-high">Alta</span><span class="soc-event">Inicio de sesión anómalo en VPN</span><span class="soc-state">Contenido</span></li>
+                <li><span class="soc-sev soc-sev-mid">Media</span><span class="soc-event">Phishing reportado por un empleado</span><span class="soc-state">Analizando</span></li>
+                <li><span class="soc-sev">Baja</span><span class="soc-event">Escaneo de puertos desde IP externa</span><span class="soc-state">Bloqueado</span></li>
+              </ol>
+            </div>
             <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-shield-check"></use></svg></div>
             <span class="card-kicker">Defensa gestionada</span>
             <h3>SOC / MDR administrado</h3>
@@ -326,7 +337,7 @@
             </ul>
           </article>
 
-          <article class="service-card">
+          <article class="service-card service-card-wide">
             <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#icon-building"></use></svg></div>
             <span class="card-kicker">Dirección externa</span>
             <h3>DOGUI vCISO</h3>
@@ -929,7 +940,7 @@
             <p>
               DOGUI Awareness se integra con WhatsApp para reforzar la capacitación, enviar recordatorios,
               aplicar mini evaluaciones y permitir que los empleados reporten amenazas desde el mismo canal.
-              Esto lo hace diferente a un curso comun.
+              Esto lo hace diferente a un curso común.
             </p>
           </div>
           <div class="whatsapp-bubbles" aria-label="Ejemplos de mensajes DOGUI Awareness">
@@ -1345,7 +1356,7 @@
             <h2 id="automation-title">Menos trabajo repetitivo. Más respuesta medible.</h2>
             <p>
               DOGUI crea automatizaciones para enriquecer alertas, bloquear indicadores, generar tickets, notificar
-              responsables y documentar evidencias sin depender de procesos manuales fragiles.
+              responsables y documentar evidencias sin depender de procesos manuales frágiles.
             </p>
           </div>
           <div class="automation-panel">
@@ -1480,24 +1491,27 @@
             <input name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" required />
           </label>
           <label>
-            Servicio de interes
+            Servicio de interés
             <select name="service" required>
               <option value="">Selecciona una opción</option>
-              <option>SOC / MDR</option>
-              <option>Pentesting / Red Team</option>
-              <option>Threat Exposure Monitoring</option>
-              <option>Dark Web / Filtraciones</option>
-              <option>SPEI / SPID</option>
-              <option>WhatsApp Security Assistant</option>
-              <option>PyME / WhatsApp Security Assistant</option>
-              <option>DOGUI Awareness</option>
-              <option>Awareness / Capacitación</option>
-              <option>DOGUI vCISO</option>
-              <option>vCISO</option>
-              <option>SGSI / CIDSI</option>
-              <option>Software DOGUI (SaaS)</option>
-              <option>Automatizaciones</option>
-              <option>GRC / Cumplimiento</option>
+              <optgroup label="Servicios gestionados">
+                <option>SOC / MDR</option>
+                <option>Pentesting / Red Team</option>
+                <option>Respuesta a incidentes</option>
+                <option>GRC / Cumplimiento</option>
+                <option>DOGUI vCISO</option>
+                <option>Automatizaciones</option>
+              </optgroup>
+              <optgroup label="Productos y plataformas">
+                <option>Threat Exposure Monitoring / Dark Web</option>
+                <option>SGSI / CIDSI</option>
+                <option>DOGUI Awareness</option>
+                <option>PyME / WhatsApp Security Assistant</option>
+                <option>Software DOGUI (SaaS)</option>
+              </optgroup>
+              <optgroup label="Sector financiero">
+                <option>SPEI / SPID</option>
+              </optgroup>
             </select>
           </label>
           <label class="full">

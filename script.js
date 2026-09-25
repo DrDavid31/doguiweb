@@ -8,6 +8,8 @@ const floatingCta = document.querySelector(".floating-cta");
 const scrollProgress = document.querySelector("[data-scroll-progress]");
 const navIndicator = document.querySelector("[data-nav-indicator]");
 const heroRadar = document.querySelector(".hero-radar");
+const contactSection = document.getElementById("contacto");
+let contactInView = false;
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const navLinks = nav ? Array.from(nav.querySelectorAll('a[href^="#"]')) : [];
 const navTargets = navLinks
@@ -77,7 +79,7 @@ const updateRadarParallax = () => {
 
 const setHeaderState = () => {
   header?.classList.toggle("is-scrolled", window.scrollY > 16);
-  floatingCta?.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.55);
+  floatingCta?.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.55 && !contactInView);
   setActiveNav();
   updateScrollProgress();
   updateRadarParallax();
@@ -149,7 +151,7 @@ window.addEventListener("keydown", (event) => {
 if ("IntersectionObserver" in window) {
   const revealItems = reduceMotion
     ? []
-    : document.querySelectorAll("main > section:not(.hero):not(.trust-strip)");
+    : document.querySelectorAll("main > section:not(.hero):not(.capability-strip):not(.trust-strip)");
 
   if (revealItems.length) {
     revealItems.forEach((item) => item.classList.add("reveal-ready"));
@@ -158,8 +160,10 @@ if ("IntersectionObserver" in window) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            revealObserver.unobserve(entry.target);
+            const section = entry.target;
+            section.classList.add("is-visible");
+            window.setTimeout(() => section.classList.add("is-revealed"), 1200);
+            revealObserver.unobserve(section);
           }
         });
       },
@@ -167,6 +171,15 @@ if ("IntersectionObserver" in window) {
     );
 
     revealItems.forEach((item) => revealObserver.observe(item));
+  }
+
+  if (contactSection && floatingCta) {
+    const contactObserver = new IntersectionObserver((entries) => {
+      contactInView = entries[0].isIntersecting;
+      requestHeaderState();
+    });
+
+    contactObserver.observe(contactSection);
   }
 }
 
@@ -228,7 +241,7 @@ if (!reduceMotion) {
   });
 
   const spotlightSelector =
-    ".service-card, .product-card, .package-card, .pyme-product-grid article, .vciso-deliverables article";
+    ".service-card, .product-card, .package-card, .pyme-product-grid article, .saas-product-grid article, .vciso-deliverables article";
 
   document.addEventListener(
     "mousemove",

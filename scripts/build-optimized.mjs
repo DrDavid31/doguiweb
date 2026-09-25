@@ -7,7 +7,9 @@ function minifyCss(css) {
   return css
     .replace(/\/\*[^*]*\*+(?:[^/*][^*]*\*+)*\//g, "")
     .replace(/\s+/g, " ")
-    .replace(/\s*([{}:;,>~])\s*/g, "$1")
+    // A space before ":" can be a descendant combinator (".a :nth-child(2)"), so only trim after it.
+    .replace(/\s*([{};,>~])\s*/g, "$1")
+    .replace(/:\s+/g, ":")
     .replace(/\(\s+/g, "(")
     .replace(/\s+\)/g, ")")
     .replace(/;}/g, "}")
